@@ -3,12 +3,23 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace FinalProject.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ZipCode { get; set; }
+        public string First_Name { get; set; }
+        public string Last_Name { get; set; }
+        public int Role { get; set; }
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -29,5 +40,9 @@ namespace FinalProject.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<JobSeeker> JobSeeker { get; set; }
+        public DbSet<Employer> Employer { get; set; }
     }
+
 }

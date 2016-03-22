@@ -151,7 +151,23 @@ namespace FinalProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                ApplicationDbContext db = new ApplicationDbContext();
+                int role = model.Role;
+                var JobSeeker = new JobSeeker { Name = model.Name, Address = model.Address, City = model.City, State = model.State, ZipCode = model.ZipCode };
+                var Employer = new Employer { Name = model.Name, Address = model.Address, City = model.City, State = model.State, ZipCode = model.ZipCode };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name=model.Name,  Address=model.Address, City = model.City, State=model.State, ZipCode = model.ZipCode, Role = model.Role};
+
+                if (role == 1)
+                {
+                    db.JobSeeker.Add(JobSeeker);
+                    db.SaveChanges();
+                }
+                else if (role == 2)
+                {
+                    db.Employer.Add(Employer);
+                    db.SaveChanges();
+                }
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
