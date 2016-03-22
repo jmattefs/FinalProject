@@ -14,6 +14,7 @@ namespace FinalProject.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string Info { get; set; }
+        public bool isSubscribed { get; set; }
         public Job Job { get; set; }
     }
 }

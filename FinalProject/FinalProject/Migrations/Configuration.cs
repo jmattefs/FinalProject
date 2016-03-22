@@ -4,6 +4,7 @@ namespace FinalProject.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using FinalProject.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<FinalProject.Models.ApplicationDbContext>
     {
@@ -14,6 +15,9 @@ namespace FinalProject.Migrations
 
         protected override void Seed(FinalProject.Models.ApplicationDbContext context)
         {
+
+            
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

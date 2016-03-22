@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobSeekersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -208,6 +209,10 @@
     <Compile Include="Migrations\201603221632405_new.cs" />
     <Compile Include="Migrations\201603221632405_new.Designer.cs">
       <DependentUpon>201603221632405_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603222031171_newm.cs" />
+    <Compile Include="Migrations\201603222031171_newm.Designer.cs">
+      <DependentUpon>201603222031171_newm.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -281,6 +286,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\JobSeekers\Create.cshtml" />
+    <Content Include="Views\JobSeekers\Delete.cshtml" />
+    <Content Include="Views\JobSeekers\Details.cshtml" />
+    <Content Include="Views\JobSeekers\Edit.cshtml" />
+    <Content Include="Views\JobSeekers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603221632405_new.resx">
       <DependentUpon>201603221632405_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603222031171_newm.resx">
+      <DependentUpon>201603222031171_newm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

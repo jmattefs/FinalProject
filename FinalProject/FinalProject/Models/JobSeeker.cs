@@ -15,5 +15,8 @@ namespace FinalProject.Models
         public string ZipCode { get; set; }
         public string Info { get; set; }
         public File Resume { get; set; }
+        public int Survey1Score { get; set; }
+        public int Survey2Score { get; set; }
+        public int Survey3Score { get; set; }
     }
 }
