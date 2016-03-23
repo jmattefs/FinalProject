@@ -196,9 +196,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AptitudesController.cs" />
+    <Compile Include="Controllers\EIsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobSeekersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PersonalitiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,12 +219,15 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Aptitude.cs" />
+    <Compile Include="Models\EI.cs" />
     <Compile Include="Models\Employer.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobSeeker.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Personality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -291,6 +297,21 @@
     <Content Include="Views\JobSeekers\Details.cshtml" />
     <Content Include="Views\JobSeekers\Edit.cshtml" />
     <Content Include="Views\JobSeekers\Index.cshtml" />
+    <Content Include="Views\Aptitudes\Create.cshtml" />
+    <Content Include="Views\Aptitudes\Delete.cshtml" />
+    <Content Include="Views\Aptitudes\Details.cshtml" />
+    <Content Include="Views\Aptitudes\Edit.cshtml" />
+    <Content Include="Views\Aptitudes\Index.cshtml" />
+    <Content Include="Views\EIs\Create.cshtml" />
+    <Content Include="Views\EIs\Delete.cshtml" />
+    <Content Include="Views\EIs\Details.cshtml" />
+    <Content Include="Views\EIs\Edit.cshtml" />
+    <Content Include="Views\EIs\Index.cshtml" />
+    <Content Include="Views\Personalities\Create.cshtml" />
+    <Content Include="Views\Personalities\Delete.cshtml" />
+    <Content Include="Views\Personalities\Details.cshtml" />
+    <Content Include="Views\Personalities\Edit.cshtml" />
+    <Content Include="Views\Personalities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

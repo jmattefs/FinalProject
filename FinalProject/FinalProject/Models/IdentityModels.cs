@@ -43,6 +43,12 @@ namespace FinalProject.Models
 
         public DbSet<JobSeeker> JobSeeker { get; set; }
         public DbSet<Employer> Employer { get; set; }
+
+        public System.Data.Entity.DbSet<FinalProject.Models.Aptitude> Aptitudes { get; set; }
+
+        public System.Data.Entity.DbSet<FinalProject.Models.Personality> Personalities { get; set; }
+
+        public System.Data.Entity.DbSet<FinalProject.Models.EI> EIs { get; set; }
     }
 
 }
