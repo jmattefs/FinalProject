@@ -46,7 +46,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,UserId,Q1,Q2,Q3,Q4,Q5")] EI eI)
+        public ActionResult Create([Bind(Include = "ID,UserId,Q1,Q2,Q3,Q4,Q5,TestCCompleted")] EI eI)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,UserId,Q1,Q2,Q3,Q4,Q5")] EI eI)
+        public ActionResult Edit([Bind(Include = "ID,UserId,Q1,Q2,Q3,Q4,Q5,TestCCompleted")] EI eI)
         {
             if (ModelState.IsValid)
             {

@@ -205,17 +205,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603221506496_morefields.cs" />
-    <Compile Include="Migrations\201603221506496_morefields.Designer.cs">
-      <DependentUpon>201603221506496_morefields.cs</DependentUpon>
+    <Compile Include="Migrations\201603231923022_new.cs" />
+    <Compile Include="Migrations\201603231923022_new.Designer.cs">
+      <DependentUpon>201603231923022_new.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603221632405_new.cs" />
-    <Compile Include="Migrations\201603221632405_new.Designer.cs">
-      <DependentUpon>201603221632405_new.cs</DependentUpon>
+    <Compile Include="Migrations\201603231953035_mmm.cs" />
+    <Compile Include="Migrations\201603231953035_mmm.Designer.cs">
+      <DependentUpon>201603231953035_mmm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603222031171_newm.cs" />
-    <Compile Include="Migrations\201603222031171_newm.Designer.cs">
-      <DependentUpon>201603222031171_newm.cs</DependentUpon>
+    <Compile Include="Migrations\201603232002268_nn.cs" />
+    <Compile Include="Migrations\201603232002268_nn.Designer.cs">
+      <DependentUpon>201603232002268_nn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -325,18 +325,18 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603221506496_morefields.resx">
-      <DependentUpon>201603221506496_morefields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603221632405_new.resx">
-      <DependentUpon>201603221632405_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603222031171_newm.resx">
-      <DependentUpon>201603222031171_newm.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <EmbeddedResource Include="Migrations\201603231923022_new.resx">
+      <DependentUpon>201603231923022_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603231953035_mmm.resx">
+      <DependentUpon>201603231953035_mmm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603232002268_nn.resx">
+      <DependentUpon>201603232002268_nn.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

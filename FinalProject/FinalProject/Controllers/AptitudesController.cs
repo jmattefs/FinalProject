@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FinalProject.Models;
+using Microsoft.AspNet.Identity;
+using System.Web.Routing;
 
 namespace FinalProject.Controllers
 {
@@ -46,17 +48,65 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,UserId,Q1,Q2,Q3,Q4,Q5")] Aptitude aptitude)
+        public ActionResult Create([Bind(Include = "ID,UserId,Q1,Q2,Q3,Q4,Q5,TestACompleted")] Aptitude aptitude)
         {
             if (ModelState.IsValid)
             {
+                aptitude.TestACompleted = true;
+                
+
+                aptitude.UserId = User.Identity.GetUserId();
+                var js = db.JobSeeker.Where(x => x.UserId == aptitude.UserId).Select(x => x).FirstOrDefault();
+                js.Survey1Complete = true;
                 db.Aptitudes.Add(aptitude);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TestResults(aptitude);
             }
 
             return View(aptitude);
         }
+
+        public ActionResult TestResults(Aptitude apt)
+        {
+            var user = apt.UserId;
+            var name = db.Users.Where(x => x.Id == user).Select(x => x.Name).FirstOrDefault();
+            int CorrectAnswers = 0;
+            int Q1 = apt.Q1;
+            int Q2 = apt.Q2;
+            int Q3 = apt.Q3;
+            int Q4 = apt.Q4;
+            int Q5 = apt.Q5;
+
+            if (Q1 == 4)
+            {
+                CorrectAnswers = CorrectAnswers + 1;
+            }
+            if (Q2 == 1)
+            {
+                CorrectAnswers = CorrectAnswers + 1;
+            }
+            if (Q3 == 3)
+            {
+                CorrectAnswers = CorrectAnswers + 1;
+            }
+            if (Q4 == 2)
+            {
+                CorrectAnswers = CorrectAnswers + 1;
+            }
+            if (Q5 == 4)
+            {
+                CorrectAnswers = CorrectAnswers + 1;
+                var person = db.JobSeeker.Where(x => x.UserId == user).Select(x => x).FirstOrDefault();
+                person.Survey1Score = CorrectAnswers;
+                db.SaveChanges();
+            }
+            
+            int id = db.JobSeeker.Where(x => x.Name == name).Select(x => x.ID).FirstOrDefault();
+            return RedirectToAction("Details", new RouteValueDictionary(new { controller = "JobSeekers", action = "Details", id = id }));
+
+        }
+
+        
 
         // GET: Aptitudes/Edit/5
         public ActionResult Edit(int? id)
@@ -78,7 +128,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,UserId,Q1,Q2,Q3,Q4,Q5")] Aptitude aptitude)
+        public ActionResult Edit([Bind(Include = "ID,UserId,Q1,Q2,Q3,Q4,Q5,TestACompleted")] Aptitude aptitude)
         {
             if (ModelState.IsValid)
             {

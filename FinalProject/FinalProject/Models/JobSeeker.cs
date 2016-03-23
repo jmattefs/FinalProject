@@ -8,6 +8,7 @@ namespace FinalProject.Models
     public class JobSeeker
     {
         public int ID { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -16,7 +17,10 @@ namespace FinalProject.Models
         public string Info { get; set; }
         public File Resume { get; set; }
         public int Survey1Score { get; set; }
+        public bool Survey1Complete { get; set; }
         public int Survey2Score { get; set; }
+        public bool Survey2Complete { get; set; }
         public int Survey3Score { get; set; }
+        public bool Survey3Complete { get; set; }
     }
 }

@@ -61,6 +61,13 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |              @*only for this person*@
-    @Html.ActionLink("Back to List", "Index")            @*GO TO SURVEYS*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) | @*only for this person*@
+    
+    @if (Model.Survey1Complete == false)
+    {
+        @Html.ActionLink("Take Test A", "Create", "Aptitudes")
+    }
+
+
+             @*GO TO SURVEYS*@
 </p>

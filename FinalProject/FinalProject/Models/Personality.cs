@@ -15,5 +15,6 @@ namespace FinalProject.Models
         public int Q4 { get; set; }
         public int Q5 { get; set; }
         public string PersonalityType { get; set; }
+        public bool TestBCompleted { get; set; }
     }
 }

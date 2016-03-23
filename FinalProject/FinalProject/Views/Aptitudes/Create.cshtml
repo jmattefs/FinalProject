@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Test A</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,10 +12,94 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Aptitude</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div><h4>Which word does not belong?</h4></div>
         <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems = new List<SelectListItem>
+                  ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Cup",   Value = "1"},
+                new SelectListItem {Text = "Plate", Value = "2"},
+                new SelectListItem {Text = "Pencil", Value = "3"},
+                new SelectListItem {Text = "Air", Value = "4"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q1, listItems)
+                }
+            </div>
+        </div>
+        <div><h4>Medicine is to Illness as.. </h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems2 = new List<SelectListItem>
+                ()
+                {
+               new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Law is to Anarchy",   Value = "1"},
+                new SelectListItem {Text = "Hunger is to Thirst", Value = "2"},
+                new SelectListItem {Text = "Etiquette is to Discipline", Value = "3"},
+                new SelectListItem {Text = "Stimulant is to Sensitivity", Value = "4"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q2, listItems2)
+                }
+            </div>
+        </div>
+        <div><h4>Andrew left last. Brad left before Claire. Claire left after David. David left before Brad. Erin left after Claire.  Who left first?</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems3 = new List<SelectListItem>
+                ()
+                {
+                       new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Brad",   Value = "1"},
+                new SelectListItem {Text = "Claire", Value = "2"},
+                new SelectListItem {Text = "David", Value = "3"},
+                new SelectListItem {Text = "Erin", Value = "4"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q3, listItems3)
+                }
+            </div>
+        </div>
+        <div><h4>Steve walks 100 yards north, then 120 yards east, and then 20 more yards north.  Then he walks 40 yards west before walking 60 yards south.  How far is he from his starting position?</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems4 = new List<SelectListItem>
+                ()
+                {
+                       new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "80 yards",   Value = "1"},
+                new SelectListItem {Text = "100 yards", Value = "2"},
+                new SelectListItem {Text = "120 yards", Value = "3"},
+                new SelectListItem {Text = "140 yards", Value = "4"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q4, listItems4)
+                }
+            </div>
+        </div>
+        <div><h4>Rearrange the letters in the word "team" in order to make a new word.  Which answer below best describes the new word?</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems5 = new List<SelectListItem>
+                ()
+                {
+                       new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "A level in a structure",   Value = "1"},
+                new SelectListItem {Text = "To grow weary", Value = "2"},
+                new SelectListItem {Text = "A person of lower status", Value = "3"},
+                new SelectListItem {Text = "Self-referential ", Value = "4"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q5, listItems5)
+                }
+            </div>
+        </div>
+        @*<div class="form-group">
             @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
@@ -61,11 +145,11 @@
                 @Html.EditorFor(model => model.Q5, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Q5, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
             </div>
         </div>
     </div>
