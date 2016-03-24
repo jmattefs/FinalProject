@@ -1,31 +1,122 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity;
+@{
     ViewBag.Title = "Home Page";
 }
+@{
 
+    FinalProject.Models.ApplicationDbContext db = new FinalProject.Models.ApplicationDbContext();
+    string UserID = User.Identity.GetUserId();
+    int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
+}
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <h1>Job website</h1>
+    <p class="lead">Job-related words will go here</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+@if (User.Identity.GetUserId() == null)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Jobseekers!</h2>
+            <p>
+                Register today and take the first step on your path to becoming a person with a job.
+            </p>
+
+            <p>
+                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
+
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Employers!</h2>
+            <p>Register today to find your next great employee. Subscribe to our premium service in order to make that process even easier. Choose "Employer" during the registration process. </p>
+            <p>
+                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
+
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Premium</h2>
+            <p>For employers we also offer a premium service that will help you to find the perfect employee for the position you are trying to fill. This will allow you to directly contact jobseekers and sort them by criteria determined by you! Register for free and return to this page to sign up.</p>
+            
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+}
+@if (UserRole == 1)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Step One</h2>
+            <p>
+                Registering as a jobseeker was step one. If you're reading this that step is already completed.  Congratulations. 
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Step Two</h2>
+            <p>
+                Click on "MyProfile" at the top of the page to give a brief introduction that prospective employers will see.  Click "edit"" in your profile page to do this.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Step Three</h2>
+            <p>
+               On your profile page, take the three tests provided to let an employer know what jobs fit you best.
+            </p>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+        }
+        @if (UserRole == 2)
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Buy a Premium Account</h2>
+                    <p>If you would like to have access to more information, purchase our premium service.  This will allow you to filter jobseekers by aptitude, personality types, and emotional intelligence.</p>
+
+                </div>
+                <div class="col-md-4">
+                   <br /><br /><br />
+                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+                        <input type="hidden" name="return" value="http://localhost:44141/Employers/ThankYou">   @*//Change this*@
+                        <input type="hidden" name="cbt" value="Return to Feedback.com" src="http://localhost:44141/Employers/ThankYou" />
+
+                        <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+
+
+
+                </div>
+            </div>
+                }
+                @*<div class="row">
+                        <div class="col-md-4">
+                            <h2>Jobseekers!</h2>
+                            <p>
+                                Register today and take the first step on your path to becoming a person with a job.
+                            </p>
+
+                            <p>
+                                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
+
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Employers!</h2>
+                            <p>Register today to find your next great employee. Subscribe to our premium service in order to make that process even easier. Choose "Employer" during the registration process. </p>
+                            <p>
+                                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
+
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Premium</h2>
+                            <p>We offer a premium service that will help you to find the perfect employee for the position you are trying to fill. This allows you to contact jobseekers and sort them by criteria determined by you! </p>
+                            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                        </div>
+                    </div>*@
