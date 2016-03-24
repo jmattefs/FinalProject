@@ -61,21 +61,28 @@
     </dl>
 </div>
 <p>
-   Take the following tests to get started.
+    @if (Model.Survey1Complete == false || Model.Survey2Complete == false || Model.Survey3Complete == false)
+    {
+        <h3><b>Take the following tests to get started.</b></h3>
+    }
+   
     
     @if (Model.Survey1Complete == false)
     {
-        @Html.ActionLink("Take Test A", "Create", "Aptitudes") 
+        <br />
+        @Html.ActionLink("Take Test A", "Create", "Aptitudes", "",new { @class = "btn btn-info" }) 
     }
     <br />
     @if (Model.Survey2Complete == false)
     {
-        @Html.ActionLink("Take Test B", "Create", "Personalities") 
+        <br />
+        @Html.ActionLink("Take Test B", "Create", "Personalities","", new { @class = "btn btn-success" }) 
     }
     <br />
     @if (Model.Survey3Complete == false)
     {
-        @Html.ActionLink("Take Test C", "Create", "EIs") 
+        <br />
+        @Html.ActionLink("Take Test C", "Create", "EIs","", new { @class = "btn btn-warning" }) 
     }
 
 
