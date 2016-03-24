@@ -17,12 +17,14 @@ namespace FinalProject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Aptitudes
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Aptitudes.ToList());
         }
 
         // GET: Aptitudes/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace FinalProject.Controllers
         }
 
         // GET: Aptitudes/Create
+        
         public ActionResult Create()
         {
             return View();
@@ -53,7 +56,8 @@ namespace FinalProject.Controllers
             if (ModelState.IsValid)
             {
                 aptitude.TestACompleted = true;
-                
+                var user = aptitude.UserId;
+                var name = db.Users.Where(x => x.Id == user).Select(x => x.Name).FirstOrDefault();
 
                 aptitude.UserId = User.Identity.GetUserId();
                 var js = db.JobSeeker.Where(x => x.UserId == aptitude.UserId).Select(x => x).FirstOrDefault();
@@ -61,11 +65,13 @@ namespace FinalProject.Controllers
                 db.Aptitudes.Add(aptitude);
                 db.SaveChanges();
                 TestResults(aptitude);
+                int id = db.JobSeeker.Where(x => x.Name == name).Select(x => x.ID).FirstOrDefault();
+                return RedirectToAction("Details", "JobSeekers", new { id = id });
             }
 
             return View(aptitude);
         }
-
+      
         public ActionResult TestResults(Aptitude apt)
         {
             var user = apt.UserId;
@@ -99,10 +105,12 @@ namespace FinalProject.Controllers
                 var person = db.JobSeeker.Where(x => x.UserId == user).Select(x => x).FirstOrDefault();
                 person.Survey1Score = CorrectAnswers;
                 db.SaveChanges();
+                
             }
             
             int id = db.JobSeeker.Where(x => x.Name == name).Select(x => x.ID).FirstOrDefault();
-            return RedirectToAction("Details", new RouteValueDictionary(new { controller = "JobSeekers", action = "Details", id = id }));
+
+            return View("Details");
 
         }
 

@@ -4,76 +4,181 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
+<h2>Test C</h2>
+<h3>Select your answers based on how much you agree with each statement.</h3>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>EI</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div><h4>I can stay calm under pressure.</h4></div>
         <div class="form-group">
-            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+            <div class="col-md-10" style="color:black">
+                @{var listItems = new List<SelectListItem>
+                    ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Strongly Disagree",   Value = "1"},
+                new SelectListItem {Text = "Disagree", Value = "2"},
+                new SelectListItem {Text = "Neither", Value = "3"},
+                new SelectListItem {Text = "Agree", Value = "4"},
+                new SelectListItem {Text = "Strongly Agree", Value = "5" }
+                };
+
+                    @Html.DropDownListFor(model => model.Q1, listItems)
+                }
+            </div>
+        </div>
+        <div><h4>I consider myself a postitive person.</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems2 = new List<SelectListItem>
+                    ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Strongly Disagree",   Value = "1"},
+                new SelectListItem {Text = "Disagree", Value = "2"},
+                new SelectListItem {Text = "Neither", Value = "3"},
+                new SelectListItem {Text = "Agree", Value = "4"},
+                new SelectListItem {Text = "Strongly Agree", Value = "5" }
+                };
+
+                    @Html.DropDownListFor(model => model.Q2, listItems2)
+                }
             </div>
         </div>
 
+        <div><h4>I maintain a sense of humor.</h4></div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Q1, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Q1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Q1, "", new { @class = "text-danger" })
+            <div class="col-md-10" style="color:black">
+                @{var listItems3 = new List<SelectListItem>
+                    ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Strongly Disagree",   Value = "1"},
+                new SelectListItem {Text = "Disagree", Value = "2"},
+                new SelectListItem {Text = "Neither", Value = "3"},
+                new SelectListItem {Text = "Agree", Value = "4"},
+                new SelectListItem {Text = "Strongly Agree", Value = "5" }
+                };
+
+                    @Html.DropDownListFor(model => model.Q3, listItems3)
+                }
             </div>
         </div>
 
+        <div><h4>I can admit when I make a mistake.</h4></div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Q2, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Q2, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Q2, "", new { @class = "text-danger" })
+            <div class="col-md-10" style="color:black">
+                @{var listItems4 = new List<SelectListItem>
+                    ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Strongly Disagree",   Value = "1"},
+                new SelectListItem {Text = "Disagree", Value = "2"},
+                new SelectListItem {Text = "Neither", Value = "3"},
+                new SelectListItem {Text = "Agree", Value = "4"},
+                new SelectListItem {Text = "Strongly Agree", Value = "5" }
+                };
+
+                    @Html.DropDownListFor(model => model.Q4, listItems4)
+                }
             </div>
         </div>
 
+        <div><h4>I handle setbacks effectively.</h4></div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Q3, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Q3, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Q3, "", new { @class = "text-danger" })
+            <div class="col-md-10" style="color:black">
+                @{var listItems5 = new List<SelectListItem>
+                    ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Strongly Disagree",   Value = "1"},
+                new SelectListItem {Text = "Disagree", Value = "2"},
+                new SelectListItem {Text = "Neither", Value = "3"},
+                new SelectListItem {Text = "Agree", Value = "4"},
+                new SelectListItem {Text = "Strongly Agree", Value = "5" }
+                };
+
+                    @Html.DropDownListFor(model => model.Q5, listItems5)
+                }
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Q4, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Q4, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Q4, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Q5, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Q5, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Q5, "", new { @class = "text-danger" })
+
+
+
+
+
+
+
+        @*<div class="form-horizontal">
+            <h4>EI</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Q1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Q1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Q1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Q2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Q2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Q2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Q3, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Q3, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Q3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Q4, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Q4, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Q4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Q5, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Q5, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Q5, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
+                    }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

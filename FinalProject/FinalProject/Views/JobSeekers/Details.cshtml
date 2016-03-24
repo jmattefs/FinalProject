@@ -5,7 +5,7 @@
 }
 
 <h2>@Html.DisplayFor(model => model.Name)'s Profile</h2>
-
+@Html.ActionLink("Edit", "Edit", new { id = Model.ID })  @*only for this person*@
 <div>
 
     <hr />
@@ -61,11 +61,21 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) | @*only for this person*@
+   Take the following tests to get started.
     
     @if (Model.Survey1Complete == false)
     {
-        @Html.ActionLink("Take Test A", "Create", "Aptitudes")
+        @Html.ActionLink("Take Test A", "Create", "Aptitudes") 
+    }
+    <br />
+    @if (Model.Survey2Complete == false)
+    {
+        @Html.ActionLink("Take Test B", "Create", "Personalities") 
+    }
+    <br />
+    @if (Model.Survey3Complete == false)
+    {
+        @Html.ActionLink("Take Test C", "Create", "EIs") 
     }
 
 

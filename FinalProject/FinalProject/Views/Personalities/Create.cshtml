@@ -4,18 +4,133 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
+<h2>Test B</h2>
+<h3>Select your answers based on the accuracy of the statement.</h3>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Personality</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div><h4>I have a rich vocabulary</h4></div>
         <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems = new List<SelectListItem>
+                  ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Inaccurate",   Value = "1"},
+                new SelectListItem {Text = "Neutral", Value = "2"},
+                new SelectListItem {Text = "Accurate", Value = "3"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q1, listItems)
+                }
+            </div>
+        </div>
+        <div><h4>I am always prepared.</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems2 = new List<SelectListItem>
+                  ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Inaccurate",   Value = "1"},
+                new SelectListItem {Text = "Neutral", Value = "2"},
+                new SelectListItem {Text = "Accurate", Value = "3"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q2, listItems2)
+                }
+            </div>
+        </div>
+        <div><h4>I am the life of the party.</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems3 = new List<SelectListItem>
+                  ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Inaccurate",   Value = "1"},
+                new SelectListItem {Text = "Neutral", Value = "2"},
+                new SelectListItem {Text = "Accurate", Value = "3"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q3, listItems3)
+                }
+            </div>
+        </div>
+        <div><h4>I am interested in people.</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems4 = new List<SelectListItem>
+                  ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Inaccurate",   Value = "1"},
+                new SelectListItem {Text = "Neutral", Value = "2"},
+                new SelectListItem {Text = "Accurate", Value = "3"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q4, listItems4)
+                }
+            </div>
+        </div>
+        <div><h4>I get irritated easily.</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems5 = new List<SelectListItem>
+                  ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Inaccurate",   Value = "1"},
+                new SelectListItem {Text = "Neutral", Value = "2"},
+                new SelectListItem {Text = "Accurate", Value = "3"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q5, listItems5)
+                }
+            </div>
+        </div>
+        <div><h4>I am full of ideas.</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems6 = new List<SelectListItem>
+                  ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Inaccurate",   Value = "1"},
+                new SelectListItem {Text = "Neutral", Value = "2"},
+                new SelectListItem {Text = "Accurate", Value = "3"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q6, listItems6)
+                }
+            </div>
+        </div>
+        <div><h4>I make a mess of things.</h4></div>
+        <div class="form-group">
+            <div class="col-md-10" style="color:black">
+                @{var listItems7 = new List<SelectListItem>
+                  ()
+                {
+                new SelectListItem {Text = "", Value = "0" },
+                new SelectListItem {Text = "Inaccurate",   Value = "1"},
+                new SelectListItem {Text = "Neutral", Value = "2"},
+                new SelectListItem {Text = "Accurate", Value = "3"},
+                };
+
+                    @Html.DropDownListFor(model => model.Q7, listItems7)
+                }
+            </div>
+        </div>
+
+
+
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
@@ -61,19 +176,19 @@
                 @Html.EditorFor(model => model.Q5, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Q5, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

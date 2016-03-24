@@ -20,8 +20,8 @@ namespace FinalProject.Controllers
         {
             return View(db.JobSeeker.ToList());
         }
-        
-        
+
+        [AllowAnonymous]
         // GET: JobSeekers/Details/5
         public ActionResult Details(int? id)
         {
