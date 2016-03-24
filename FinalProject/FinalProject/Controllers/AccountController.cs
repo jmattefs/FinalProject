@@ -167,6 +167,7 @@ namespace FinalProject.Controllers
                 else if (role == 2)
                 {
                     db.Employer.Add(Employer);
+                    Employer.UserId = user.Id;
                     db.SaveChanges();
                 }
 

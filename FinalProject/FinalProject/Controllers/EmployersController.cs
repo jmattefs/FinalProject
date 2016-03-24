@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FinalProject.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FinalProject.Controllers
 {
@@ -14,6 +15,19 @@ namespace FinalProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
+
+        public ActionResult ThankYou()
+        {
+            var id = User.Identity.GetUserId();
+            var user = db.Employer.Where(x => x.UserId == id).Select(x => x).FirstOrDefault();
+
+            user.isSubscribed = true;
+
+            db.SaveChanges();
+
+            return View();
+        }
         // GET: Employers
         public ActionResult Index()
         {

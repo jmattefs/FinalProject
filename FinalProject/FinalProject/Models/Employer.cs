@@ -8,6 +8,7 @@ namespace FinalProject.Models
     public class Employer
     {
         public int ID { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
