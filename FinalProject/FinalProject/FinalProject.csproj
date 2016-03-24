@@ -327,6 +327,7 @@
     <Content Include="Views\Employers\Edit.cshtml" />
     <Content Include="Views\Employers\Index.cshtml" />
     <Content Include="Views\Employers\ThankYou.cshtml" />
+    <Content Include="Views\JobSeekers\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

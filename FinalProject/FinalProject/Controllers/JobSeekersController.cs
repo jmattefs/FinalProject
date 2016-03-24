@@ -20,7 +20,10 @@ namespace FinalProject.Controllers
         {
             return View(db.JobSeeker.ToList());
         }
-
+        public ActionResult List()
+        {
+            return View(db.JobSeeker.ToList());
+        }
         [AllowAnonymous]
         // GET: JobSeekers/Details/5
         public ActionResult Details(int? id)
@@ -53,7 +56,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info,")] JobSeeker jobSeeker)
+        public ActionResult Create([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info,UserId")] JobSeeker jobSeeker)
         {
             if (ModelState.IsValid)
             {
@@ -85,13 +88,15 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info")] JobSeeker jobSeeker)
+        public ActionResult Edit([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info, UserId")] JobSeeker jobSeeker)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(jobSeeker).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                
+                return RedirectToAction("Details", new { id = jobSeeker.ID });
             }
             return View(jobSeeker);
         }

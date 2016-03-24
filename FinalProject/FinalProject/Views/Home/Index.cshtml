@@ -4,12 +4,17 @@
 }
 @{
 
-    FinalProject.Models.ApplicationDbContext db = new FinalProject.Models.ApplicationDbContext();
-    string UserID = User.Identity.GetUserId();
-    int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
-    var user = db.Employer.Where(x => x.UserId == UserID).Select(x => x).FirstOrDefault();
-    bool Subscription = user.isSubscribed;
-}
+        FinalProject.Models.ApplicationDbContext db = new FinalProject.Models.ApplicationDbContext();
+        string UserID = User.Identity.GetUserId();
+        int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
+        var user = db.Employer.Where(x => x.UserId == UserID).Select(x => x).FirstOrDefault();
+        bool Subscription = false;
+        if (UserRole == 2)
+        {
+           Subscription = user.isSubscribed;
+        }
+
+
 <div class="jumbotron">
     <h1>Job website</h1>
     <p class="lead">Job-related words will go here</p>
@@ -17,7 +22,7 @@
 </div>
 
 
-@if (User.Identity.GetUserId() == null)
+if (User.Identity.GetUserId() == null)
 {
     <div class="row">
         <div class="col-md-4">
@@ -46,7 +51,7 @@
         </div>
     </div>
 }
-@if (UserRole == 1)
+if (UserRole == 1)
 {
     <div class="row">
         <div class="col-md-4">
@@ -69,8 +74,8 @@
         </div>
 
     </div>
-        }
-        @if (UserRole == 2 && Subscription == false)
+}
+       if (UserRole == 2 && Subscription == false)
         {
             <div class="row">
                 <div class="col-md-4">
@@ -95,7 +100,8 @@
 
                 </div>
             </div>
-                }
+            }
+        }
                 @*<div class="row">
                         <div class="col-md-4">
                             <h2>Jobseekers!</h2>

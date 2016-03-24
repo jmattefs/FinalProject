@@ -5,6 +5,7 @@
     FinalProject.Models.ApplicationDbContext db = new FinalProject.Models.ApplicationDbContext();
     string UserID = User.Identity.GetUserId();
     int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
+    var user = db.Employer.Where(x => x.UserId == UserID).Select(x => x).FirstOrDefault();
 }
 <html>
 <head>
@@ -25,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Job Site", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Jobseekers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
             @if (UserRole == 1  @*jobseeker*@)
@@ -39,7 +40,7 @@
                     @Html.Partial("_LoginPartial")
                 </div>
             }
-            else if (UserRole == 2   /*employer*/)
+            else if (UserRole == 2 && user.isSubscribed == false  /*employer*/)
             {
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -50,11 +51,22 @@
                   @Html.Partial("_LoginPartial")
                 </div>
             }
+            else if (UserRole == 2 && user.isSubscribed == true)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>                     @*Applicants*@
+                        <li>@Html.ActionLink("Jobseekers", "List", "Jobseekers")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
             else
             {
                 @Html.Partial("_LoginPartial")
             }
-           
+
         </div>
     </div>
     <div class="container body-content">
