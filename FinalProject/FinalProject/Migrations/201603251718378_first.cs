@@ -3,7 +3,7 @@ namespace FinalProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _new : DbMigration
+    public partial class first : DbMigration
     {
         public override void Up()
         {
@@ -44,6 +44,7 @@ namespace FinalProject.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
                         Name = c.String(),
                         Address = c.String(),
                         City = c.String(),
@@ -64,14 +65,27 @@ namespace FinalProject.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Description = c.String(),
+                        TestAScore = c.Int(nullable: false),
+                        TestBScore = c.String(),
+                        TestCScore = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.Files",
+                c => new
+                    {
+                        FileID = c.Int(nullable: false, identity: true),
+                        FileName = c.String(),
+                    })
+                .PrimaryKey(t => t.FileID);
             
             CreateTable(
                 "dbo.JobSeekers",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
                         Name = c.String(),
                         Address = c.String(),
                         City = c.String(),
@@ -79,21 +93,14 @@ namespace FinalProject.Migrations
                         ZipCode = c.String(),
                         Info = c.String(),
                         Survey1Score = c.Int(nullable: false),
-                        Survey2Score = c.Int(nullable: false),
-                        Survey3Score = c.Int(nullable: false),
-                        Resume_FileID = c.Int(),
+                        Survey1Complete = c.Boolean(nullable: false),
+                        Survey2Score = c.String(),
+                        Survey2Complete = c.Boolean(nullable: false),
+                        Survey3Score = c.String(),
+                        Survey3Complete = c.Boolean(nullable: false),
+                        ResumeID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Files", t => t.Resume_FileID)
-                .Index(t => t.Resume_FileID);
-            
-            CreateTable(
-                "dbo.Files",
-                c => new
-                    {
-                        FileID = c.Int(nullable: false, identity: true),
-                    })
-                .PrimaryKey(t => t.FileID);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.Personalities",
@@ -106,6 +113,8 @@ namespace FinalProject.Migrations
                         Q3 = c.Int(nullable: false),
                         Q4 = c.Int(nullable: false),
                         Q5 = c.Int(nullable: false),
+                        Q6 = c.Int(nullable: false),
+                        Q7 = c.Int(nullable: false),
                         PersonalityType = c.String(),
                         TestBCompleted = c.Boolean(nullable: false),
                     })
@@ -195,7 +204,6 @@ namespace FinalProject.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.JobSeekers", "Resume_FileID", "dbo.Files");
             DropForeignKey("dbo.Employers", "Job_ID", "dbo.Jobs");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -203,7 +211,6 @@ namespace FinalProject.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.JobSeekers", new[] { "Resume_FileID" });
             DropIndex("dbo.Employers", new[] { "Job_ID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
@@ -211,8 +218,8 @@ namespace FinalProject.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Personalities");
-            DropTable("dbo.Files");
             DropTable("dbo.JobSeekers");
+            DropTable("dbo.Files");
             DropTable("dbo.Jobs");
             DropTable("dbo.Employers");
             DropTable("dbo.EIs");

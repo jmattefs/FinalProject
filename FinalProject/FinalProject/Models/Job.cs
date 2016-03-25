@@ -10,5 +10,8 @@ namespace FinalProject.Models
         public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public int TestAScore { get; set; }
+        public string TestBScore { get; set; }
+        public string TestCScore { get; set; }
     }
 }

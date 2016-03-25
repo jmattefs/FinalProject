@@ -4,15 +4,16 @@
 }
 @{
 
-        FinalProject.Models.ApplicationDbContext db = new FinalProject.Models.ApplicationDbContext();
-        string UserID = User.Identity.GetUserId();
-        int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
-        var user = db.Employer.Where(x => x.UserId == UserID).Select(x => x).FirstOrDefault();
-        bool Subscription = false;
-        if (UserRole == 2)
-        {
-           Subscription = user.isSubscribed;
-        }
+    FinalProject.Models.ApplicationDbContext db = new FinalProject.Models.ApplicationDbContext();
+    string UserID = User.Identity.GetUserId();
+    int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
+    var user = db.Employer.Where(x => x.UserId == UserID).Select(x => x).FirstOrDefault();
+    var UploadedResume = db.JobSeeker.Where(x => x.UserId == UserID).Select(x => x.UploadedResume).FirstOrDefault();
+    bool Subscription = false;
+    if (UserRole == 2)
+    {
+        Subscription = user.isSubscribed;
+    }
 
 
 <div class="jumbotron">
@@ -56,14 +57,25 @@ if (UserRole == 1)
     <div class="row">
         <div class="col-md-4">
             <h2>Upload your resume</h2>
-            <p>
-                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <input type="file" name="file" id="file" />
-                    <br>
-                    <input type="submit" name="submit" value="Upload" />
-                }
-            </p>
+            @if (UploadedResume == false)
+            {
+                <p>
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <input type="file" name="file" id="file" />
+                        <br>
+                        <input type="submit" name="submit" value="Upload" />
+                    }
+                </p>
+            }
+            else if (UploadedResume == true)
+            {
+                <p>
+                    <img style='height:275px; width:275px' src="@Url.Content("http://cliparts.co/cliparts/kcK/B8p/kcKB8pagi.jpg")">
+                </p>
+            }
+
+
         </div>
         <div class="col-md-4">
             <h2>Step Two</h2>

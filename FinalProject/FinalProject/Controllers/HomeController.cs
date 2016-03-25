@@ -43,7 +43,7 @@ namespace FinalProject.Controllers
                     
                     
                     db.File.Add(aResume);
-                    
+                    user.UploadedResume = true;
                     db.SaveChanges();
                     user.ResumeID = aResume.FileID;
                     db.SaveChanges();
