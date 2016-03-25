@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create a Job</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Job</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -32,14 +32,90 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TestAScore, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TestAScore, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TestAScore, "", new { @class = "text-danger" })
-            </div>
+            <table>
+                <tr>
+                    <td width="300px" align="right">
+                        <h5><b>Minimum Aptitude Test Score</b></h5>
+                    </td>
+                    <td align="right">
+
+                        <div class="col-md-10" style="color:black">
+                            @{var listItems3 = new List<SelectListItem>()
+                                  {
+                                  new SelectListItem {Text = "No Preference", Value = "0" },
+                                  new SelectListItem {Text = "1", Value = "1"},
+                                  new SelectListItem {Text = "2", Value = "2"},
+                                  new SelectListItem {Text = "3", Value = "3"},
+                                  new SelectListItem {Text = "4", Value = "4"},
+                                  new SelectListItem {Text = "5", Value = "5"},
+                                  };
+
+                                @Html.DropDownListFor(model => model.TestAScore, listItems3)
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </table>
+           
+        </div>
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td width="300px" align="right">
+                        <h5><b>Preferred Big Five Personality Type</b></h5>
+                    </td>
+                    <td>
+
+                        <div class="col-md-10" style="color:black">
+                            @{var listItems4 = new List<SelectListItem>()
+                                  {
+                                  new SelectListItem {Text = "No Preference", Value = "0" },
+                                  new SelectListItem {Text = "Open", Value = "1"},
+                                  new SelectListItem {Text = "Conscientous", Value = "2"},
+                                  new SelectListItem {Text = "Extrovert", Value = "3"},
+                                  new SelectListItem {Text = "Agreeable", Value = "4"},
+                                  new SelectListItem {Text = "Neurotic", Value = "5"},
+                                  };
+
+                                @Html.DropDownListFor(model => model.TestBScore, listItems4)
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td width="300px" align="right">
+                        <h5><b>Minimum Emotional Intelligence Score</b></h5>
+                    </td>
+                    <td>
+
+                        <div class="col-md-10" style="color:black">
+                            @{var listItems5 = new List<SelectListItem>()
+                                  {
+                                  new SelectListItem {Text = "No Preference", Value = "0" },
+                                  new SelectListItem {Text = "Very Poor", Value = "1"},
+                                  new SelectListItem {Text = "Poor", Value = "2"},
+                                  new SelectListItem {Text = "Average", Value = "3"},
+                                  new SelectListItem {Text = "Good", Value = "4"},
+                                  new SelectListItem {Text = "Excellent ", Value = "5"},
+                                  };
+
+                                @Html.DropDownListFor(model => model.TestCScore, listItems5)
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
         </div>
 
-        <div class="form-group">
+
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.TestBScore, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TestBScore, new { htmlAttributes = new { @class = "form-control" } })
@@ -53,11 +129,11 @@
                 @Html.EditorFor(model => model.TestCScore, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TestCScore, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-danger btn-lg btn-block" />
             </div>
         </div>
     </div>
