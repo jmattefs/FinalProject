@@ -55,9 +55,14 @@ if (UserRole == 1)
 {
     <div class="row">
         <div class="col-md-4">
-            <h2>Step One</h2>
+            <h2>Upload your resume</h2>
             <p>
-                Registering as a jobseeker was step one. If you're reading this that step is already completed.  Congratulations. 
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="file" name="file" id="file" />
+                    <br>
+                    <input type="submit" name="submit" value="Upload" />
+                }
             </p>
         </div>
         <div class="col-md-4">

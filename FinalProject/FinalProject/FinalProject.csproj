@@ -226,6 +226,14 @@
     <Compile Include="Migrations\201603241943190_mams.Designer.cs">
       <DependentUpon>201603241943190_mams.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603251547279_nadkf.cs" />
+    <Compile Include="Migrations\201603251547279_nadkf.Designer.cs">
+      <DependentUpon>201603251547279_nadkf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603251633454_a.cs" />
+    <Compile Include="Migrations\201603251633454_a.Designer.cs">
+      <DependentUpon>201603251633454_a.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Aptitude.cs" />
@@ -331,6 +339,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Resumes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -358,6 +367,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603241943190_mams.resx">
       <DependentUpon>201603241943190_mams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603251547279_nadkf.resx">
+      <DependentUpon>201603251547279_nadkf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603251633454_a.resx">
+      <DependentUpon>201603251633454_a.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

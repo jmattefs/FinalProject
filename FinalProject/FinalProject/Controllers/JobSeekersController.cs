@@ -56,7 +56,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info,UserId")] JobSeeker jobSeeker)
+        public ActionResult Create([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info,UserId,ResumeID")] JobSeeker jobSeeker)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info, UserId")] JobSeeker jobSeeker)
+        public ActionResult Edit([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info, UserId, ResumeID")] JobSeeker jobSeeker)
         {
             if (ModelState.IsValid)
             {
@@ -134,6 +134,16 @@ namespace FinalProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult GetResume(int ID)
+        {
+            var id = User.Identity.GetUserId();
+            var user = db.JobSeeker.Where(x => x.UserId == id).Select(x => x).FirstOrDefault();
+
+            var resume = db.File.Where(x => x.FileID == ID).Select(x => x).FirstOrDefault();
+
+            return Redirect("~/Resumes/" + resume.FileName +".pdf");
+
         }
     }
 }

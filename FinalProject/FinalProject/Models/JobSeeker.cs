@@ -15,12 +15,14 @@ namespace FinalProject.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string Info { get; set; }
-        public File Resume { get; set; }
+        //public File Resume { get; set; }
         public int Survey1Score { get; set; }
         public bool Survey1Complete { get; set; }
         public string Survey2Score { get; set; }
         public bool Survey2Complete { get; set; }
         public string Survey3Score { get; set; }
         public bool Survey3Complete { get; set; }
+        public int ResumeID { get; set; }
+        
     }
 }
