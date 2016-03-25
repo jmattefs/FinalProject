@@ -1,11 +1,20 @@
-﻿@model FinalProject.Models.JobSeeker
+﻿@using Microsoft.AspNet.Identity;
+@model FinalProject.Models.JobSeeker
 
 @{
     ViewBag.Title = "Details";
+    FinalProject.Models.ApplicationDbContext db = new FinalProject.Models.ApplicationDbContext();
+    string UserID = User.Identity.GetUserId();
+    int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
+    var user = db.Employer.Where(x => x.UserId == UserID).Select(x => x).FirstOrDefault();
 }
 
 <h2>@Html.DisplayFor(model => model.Name)'s Profile</h2>
-@Html.ActionLink("Edit", "Edit", new { id = Model.ID })  @*only for this person*@
+@if (UserRole == 1)
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID })  @*only for this person*@
+}
+
 <div>
 
     <hr />
@@ -67,30 +76,33 @@
 </div>
 
 <p>
-    @if (Model.Survey1Complete == false || Model.Survey2Complete == false || Model.Survey3Complete == false)
+    @if (UserRole == 1)
     {
-        <h3><b>Take the following tests to get started.</b></h3>
-    }
-   
-    
-    @if (Model.Survey1Complete == false)
-    {
-        <br />
-        @Html.ActionLink("Take Test A", "Create", "Aptitudes", "",new { @class = "btn btn-info" }) 
-    }
-    <br />
-    @if (Model.Survey2Complete == false)
-    {
-        <br />
-        @Html.ActionLink("Take Test B", "Create", "Personalities","", new { @class = "btn btn-success" }) 
-    }
-    <br />
-    @if (Model.Survey3Complete == false)
-    {
-        <br />
-        @Html.ActionLink("Take Test C", "Create", "EIs","", new { @class = "btn btn-warning" }) 
-    }
+        if (Model.Survey1Complete == false || Model.Survey2Complete == false || Model.Survey3Complete == false)
+        {
+            <h3><b>Take the following tests to get started.</b></h3>
 
+
+            if ( Model.Survey1Complete == false)
+            {
+                <br />
+                @Html.ActionLink("Take Test A", "Create", "Aptitudes", "", new { @class = "btn btn-info" })
+            }
+            <br />
+            if ( Model.Survey2Complete == false)
+            {
+                <br />
+                @Html.ActionLink("Take Test B", "Create", "Personalities", "", new { @class = "btn btn-success" })
+            }
+            <br />
+            if ( Model.Survey3Complete == false)
+            {
+                <br />
+                @Html.ActionLink("Take Test C", "Create", "EIs", "", new { @class = "btn btn-warning" })
+            }
+
+        }
+    }
 
              @*GO TO SURVEYS*@
 </p>

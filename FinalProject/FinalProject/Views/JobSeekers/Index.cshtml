@@ -9,21 +9,25 @@
 @*<p>
     @Html.ActionLink("Create New", "Create")
 </p>*@
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm})
         </th>
  
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.ActionLink("City", "Index", new { sortOrder = ViewBag.CitySortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
+           @Html.ActionLink("State", "Index", new { sortOrder = ViewBag.StateSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Zip Code", "Index", new { sortOrder = ViewBag.ZipCodeSortParm })
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.Info)
+           Info
         </th>
 
     </tr>
@@ -40,15 +44,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.State)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
 
         <td>
             @Html.DisplayFor(modelItem => item.Info)
         </td>
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+
+            @Html.ActionLink("View Profile", "Details", new { id=item.ID }) 
+
         </td>
     </tr>
 }

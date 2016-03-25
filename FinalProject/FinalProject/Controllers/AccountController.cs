@@ -154,7 +154,7 @@ namespace FinalProject.Controllers
                 ApplicationDbContext db = new ApplicationDbContext();
                 int role = model.Role;
                 
-                var JobSeeker = new JobSeeker { Name = model.Name, Address = model.Address, City = model.City, State = model.State, ZipCode = model.ZipCode};
+                var JobSeeker = new JobSeeker { Name = model.Name, Address = model.Address, City = model.City, State = model.State, ZipCode = model.ZipCode, Email = model.Email};
                 var Employer = new Employer { Name = model.Name, Address = model.Address, City = model.City, State = model.State, ZipCode = model.ZipCode };
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name=model.Name,  Address=model.Address, City = model.City, State=model.State, ZipCode = model.ZipCode, Role = model.Role};
 

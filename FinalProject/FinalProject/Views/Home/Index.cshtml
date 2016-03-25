@@ -9,6 +9,10 @@
     int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
     var user = db.Employer.Where(x => x.UserId == UserID).Select(x => x).FirstOrDefault();
     var UploadedResume = db.JobSeeker.Where(x => x.UserId == UserID).Select(x => x.UploadedResume).FirstOrDefault();
+    var TestA = db.JobSeeker.Where(x => x.UserId == UserID).Select(x => x.Survey1Complete).FirstOrDefault();
+    var TestB = db.JobSeeker.Where(x => x.UserId == UserID).Select(x => x.Survey2Complete).FirstOrDefault();
+    var TestC = db.JobSeeker.Where(x => x.UserId == UserID).Select(x => x.Survey3Complete).FirstOrDefault();
+    var Info = db.JobSeeker.Where(x => x.UserId == UserID).Select(x => x.Info).FirstOrDefault();
     bool Subscription = false;
     if (UserRole == 2)
     {
@@ -56,7 +60,7 @@ if (UserRole == 1)
 {
     <div class="row">
         <div class="col-md-4">
-            <h2>Upload your resume</h2>
+            <h2>Upload your Resume</h2>
             @if (UploadedResume == false)
             {
                 <p>
@@ -71,23 +75,41 @@ if (UserRole == 1)
             else if (UploadedResume == true)
             {
                 <p>
-                    <img style='height:275px; width:275px' src="@Url.Content("http://cliparts.co/cliparts/kcK/B8p/kcKB8pagi.jpg")">
+                    <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">
                 </p>
             }
 
 
         </div>
         <div class="col-md-4">
-            <h2>Step Two</h2>
-            <p>
-                Click on "MyProfile" at the top of the page to give a brief introduction that prospective employers will see.  Click "edit"" in your profile page to do this.
-            </p>
+            <h2>Take the Tests</h2>
+            @if (TestA == true && TestB == true && TestC == true)
+            {
+                <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">
+            }
+            else
+            {
+                <p>
+                    On your profile page, take the three tests provided to let an employer know what jobs fit you best.
+                </p>
+            }
+            
         </div>
         <div class="col-md-4">
-            <h2>Step Three</h2>
-            <p>
-               On your profile page, take the three tests provided to let an employer know what jobs fit you best.
-            </p>
+            <h2>Update your Profile</h2>
+            @if (Info == null)
+            {
+                <p>
+                    Click on "MyProfile" and then click "Edit" to give a brief introduction to employers under the "Info" section.
+                </p>
+            }
+            else
+            {
+                <p>
+                    <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">
+                </p>
+            }
+
         </div>
 
     </div>

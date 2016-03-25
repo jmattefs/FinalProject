@@ -35,7 +35,7 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("MyProfile", "Details", "JobSeekers")</li>                     
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>                    @*Jobs*@
+                        <li>@Html.ActionLink("Jobs", "Index", "Jobs")</li>                    @*Jobs*@
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -45,7 +45,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>                     @*Applicants*@
+                        <li>@Html.ActionLink("Post a Job", "Create", "Jobs")</li>                     @*Applicants*@
                         <li>@Html.ActionLink("Jobseekers", "Index", "Jobseekers")</li>
                     </ul>
                   @Html.Partial("_LoginPartial")
@@ -56,7 +56,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>                     @*Applicants*@
+                        <li>@Html.ActionLink("Post a Job", "Create", "Jobs")</li>                     @*Applicants*@
                         <li>@Html.ActionLink("Jobseekers", "List", "Jobseekers")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")

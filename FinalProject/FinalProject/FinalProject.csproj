@@ -200,6 +200,7 @@
     <Compile Include="Controllers\EIsController.cs" />
     <Compile Include="Controllers\EmployersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\JobSeekersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PersonalitiesController.cs" />
@@ -213,6 +214,18 @@
     <Compile Include="Migrations\201603251731020_nns.cs" />
     <Compile Include="Migrations\201603251731020_nns.Designer.cs">
       <DependentUpon>201603251731020_nns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603252053217_masdfdsa.cs" />
+    <Compile Include="Migrations\201603252053217_masdfdsa.Designer.cs">
+      <DependentUpon>201603252053217_masdfdsa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603252059207_initial.cs" />
+    <Compile Include="Migrations\201603252059207_initial.Designer.cs">
+      <DependentUpon>201603252059207_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603252131333_n.cs" />
+    <Compile Include="Migrations\201603252131333_n.Designer.cs">
+      <DependentUpon>201603252131333_n.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -316,6 +329,11 @@
     <Content Include="Views\Employers\Index.cshtml" />
     <Content Include="Views\Employers\ThankYou.cshtml" />
     <Content Include="Views\JobSeekers\List.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\Delete.cshtml" />
+    <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,6 +356,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603251731020_nns.resx">
       <DependentUpon>201603251731020_nns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603252053217_masdfdsa.resx">
+      <DependentUpon>201603252053217_masdfdsa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603252059207_initial.resx">
+      <DependentUpon>201603252059207_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603252131333_n.resx">
+      <DependentUpon>201603252131333_n.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

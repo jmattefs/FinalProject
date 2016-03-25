@@ -199,23 +199,23 @@ namespace FinalProject.Controllers
 
             if (maxkey == "a")
             {
-                Result = "Very Poor EI";
+                Result = "Very Poor";
             }
             if (maxkey == "b")
             {
-                Result = "Poor EI";
+                Result = "Poor";
             }
             if (maxkey == "c")
             {
-                Result = "Average EI";
+                Result = "Average";
             }
             if (maxkey == "d")
             {
-                Result = "Good EI";
+                Result = "Good";
             }
             if (maxkey == "e")
             {
-                Result = "Excellent EI";
+                Result = "Excellent";
             }
 
             var person = db.JobSeeker.Where(x => x.UserId == user).Select(x => x).FirstOrDefault();

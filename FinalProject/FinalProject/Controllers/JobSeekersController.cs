@@ -16,22 +16,128 @@ namespace FinalProject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: JobSeekers
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.JobSeeker.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.CitySortParm = sortOrder == "City" ? "city_desc" : "City";
+            ViewBag.ZipCodeSortParm = sortOrder == "ZipCode" ? "zipcode_desc" : "ZipCode";
+            ViewBag.StateSortParm = sortOrder == "State" ? "state_desc" : "State";
+
+            var js = db.JobSeeker.Select(x => x);
+            switch (sortOrder)
+            {
+                case "City":
+                    js = js.OrderBy(s => s.City);
+                    break;
+                case "city_desc":
+                    js = js.OrderByDescending(s => s.City);
+                    break;
+                case "State":
+                    js = js.OrderBy(s => s.State);
+                    break;
+                case "state_desc":
+                    js = js.OrderByDescending(s => s.State);
+                    break;
+                case "ZipCode":
+                    js = js.OrderBy(s => s.ZipCode);
+                    break;
+                case "zipcode_desc":
+                    js = js.OrderByDescending(s => s.ZipCode);
+                    break;
+                case "name_desc":
+                    js = js.OrderByDescending(s => s.Name);
+                    break;
+                default: 
+                    js = js.OrderBy(s => s.Name);
+                    break;
+            }
+            return View(js);
         }
-        public ActionResult List()
+        public ActionResult List(string sortOrder)
         {
-            return View(db.JobSeeker.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.CitySortParm = sortOrder == "City" ? "city_desc" : "City";
+            ViewBag.ZipCodeSortParm = sortOrder == "ZipCode" ? "zipcode_desc" : "ZipCode";
+            ViewBag.StateSortParm = sortOrder == "State" ? "state_desc" : "State";
+            ViewBag.TestASortParm = sortOrder == "Apt" ? "apt_desc" : "Apt";
+            ViewBag.TestBSortParm = sortOrder == "Pers" ? "pers_desc" : "Pers";
+            ViewBag.TestCSortParm = sortOrder == "EI" ? "ei_desc" : "EI";
+            
+
+            var js = db.JobSeeker.Select(x => x);
+            switch (sortOrder)
+            {
+                case "City":
+                    js = js.OrderBy(s => s.City);
+                    break;
+                case "city_desc":
+                    js = js.OrderByDescending(s => s.City);
+                    break;
+                case "State":
+                    js = js.OrderBy(s => s.State);
+                    break;
+                case "state_desc":
+                    js = js.OrderByDescending(s => s.State);
+                    break;
+                case "ZipCode":
+                    js = js.OrderBy(s => s.ZipCode);
+                    break;
+                case "zipcode_desc":
+                    js = js.OrderByDescending(s => s.ZipCode);
+                    break;
+                case "name_desc":
+                    js = js.OrderByDescending(s => s.Name);
+                    break;
+                case "Apt":
+                    js = js.OrderBy(s => s.Survey1Score);
+                    break;
+                case "apt_desc":
+                    js = js.OrderByDescending(s => s.Survey1Score);
+                    break;
+                case "Pers":
+                    js = js.OrderBy(s => s.Survey2Score);
+                    break;
+                case "pers_desc":
+                    js = js.OrderByDescending(s => s.Survey2Score);
+                    break;
+                case "EI":
+                    js = js.OrderBy(s => s.Survey3Score);
+                    break;
+                case "ei_desc":
+                    js = js.OrderByDescending(s => s.Survey3Score);
+                    break;
+                default:
+                    js = js.OrderBy(s => s.Name);
+                    break;
+            }
+
+
+            return View(js);
         }
         [AllowAnonymous]
         // GET: JobSeekers/Details/5
         public ActionResult Details(int? id)
         {
+            
             var UserID = User.Identity.GetUserId();
-            var user = db.Users.Where(x => x.Id == UserID).Select(x => x).FirstOrDefault();
-            JobSeeker js = new JobSeeker();
-            js = db.JobSeeker.Where(x => x.UserId == user.Id).Select(x => x).FirstOrDefault();
+            var role = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
+            if(role == 1)
+            {
+                var user = db.Users.Where(x => x.Id == UserID).Select(x => x).FirstOrDefault();
+                JobSeeker js = new JobSeeker();
+                js = db.JobSeeker.Where(x => x.UserId == user.Id).Select(x => x).FirstOrDefault();
+                return View(js);
+            }
+
+                JobSeeker jobseeker = new JobSeeker();
+                jobseeker = db.JobSeeker.Where(x => x.ID == id).Select(x => x).FirstOrDefault();
+
+
+                return View(jobseeker);
+        }
+            
 
             //if (id == null)
             //{
@@ -42,8 +148,8 @@ namespace FinalProject.Controllers
             //{
             //    return HttpNotFound();
             //}
-            return View(js);
-        }
+            
+        
 
         // GET: JobSeekers/Create
         public ActionResult Create()
@@ -56,7 +162,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info,UserId,ResumeID, UploadedResume")] JobSeeker jobSeeker)
+        public ActionResult Create([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info,UserId,ResumeID, UploadedResume, Email")] JobSeeker jobSeeker)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +194,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info, UserId, ResumeID, UploadedResume")] JobSeeker jobSeeker)
+        public ActionResult Edit([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info, UserId, ResumeID, UploadedResume, Email")] JobSeeker jobSeeker)
         {
             if (ModelState.IsValid)
             {

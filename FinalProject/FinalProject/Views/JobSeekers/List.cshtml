@@ -1,7 +1,10 @@
-﻿@model IEnumerable<FinalProject.Models.JobSeeker>
+﻿
+@model IEnumerable<FinalProject.Models.JobSeeker>
+    
 
 @{
     ViewBag.Title = "List";
+
 }
 
 <h2>Jobseekers    <img style='height:50px; width:90px'  src="@Url.Content("http://www.d3mconsulting.com/uploads/6/2/7/0/6270712/301312_orig.jpg")"></h2>
@@ -13,29 +16,35 @@
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Name", "List", new { sortOrder = ViewBag.NameSortParm })
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.ActionLink("City", "List", new { sortOrder = ViewBag.CitySortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Info)
+            @Html.ActionLink("State", "List", new { sortOrder = ViewBag.StateSortParm })
         </th>
         <th>
-            Aptitude Score
+            @Html.ActionLink("Zip Code", "List", new { sortOrder = ViewBag.ZipCodeSortParm })
         </th>
 
         <th>
-            Personality Type
+            @Html.ActionLink("Aptitude Score", "List", new { sortOrder = ViewBag.TestASortParm })
         </th>
 
         <th>
-            Emotional Intelligence
+            @Html.ActionLink("Personality Type", "List", new { sortOrder = ViewBag.TestBSortParm })
+        </th>
+
+        <th>
+            @Html.ActionLink("Emotional Intelligence", "List", new { sortOrder = ViewBag.TestCSortParm })
+        </th>
+        <th>
+            Info
+        </th>
+        <th>
+            Email
         </th>
 
         <th></th>
@@ -54,10 +63,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.State)
         </td>
-
         <td>
-            @Html.DisplayFor(modelItem => item.Info)
+            @Html.DisplayFor(modelItem => item.ZipCode)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Survey1Score)
         </td>
@@ -69,11 +78,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.Survey3Score)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Info)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+
+            @Html.ActionLink("View Profile", "Details", new { id=item.ID })
+
         </td>
     </tr>
 }

@@ -11,7 +11,7 @@ namespace FinalProject.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public int TestAScore { get; set; }
-        public string TestBScore { get; set; }
-        public string TestCScore { get; set; }
+        public int TestBScore { get; set; }
+        public int TestCScore { get; set; }
     }
 }
