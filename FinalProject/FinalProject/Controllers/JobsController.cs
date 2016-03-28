@@ -66,13 +66,15 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Description,TestAScore,TestBScore,TestCScore, CompanyID")] Job job)
+        public ActionResult Create([Bind(Include = "ID,Title,Description,TestAScore,TestBScore,TestCScore, CompanyID, Company")] Job job)
         {
             if (ModelState.IsValid)
             {
                 var id = User.Identity.GetUserId();
                 var user = db.Employer.Where(x => x.UserId == id).Select(x => x.UserId).FirstOrDefault();
+                var name = db.Employer.Where(x => x.UserId == id).Select(x => x.Name).FirstOrDefault();
                 job.CompanyID = user;
+                job.Company = name;
 
                 db.Jobs.Add(job);
                 db.SaveChanges();
@@ -102,7 +104,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Description,TestAScore,TestBScore,TestCScore, CompanyID")] Job job)
+        public ActionResult Edit([Bind(Include = "ID,Title,Description,TestAScore,TestBScore,TestCScore, CompanyID, Company")] Job job)
         {
             if (ModelState.IsValid)
             {

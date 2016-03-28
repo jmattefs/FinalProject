@@ -1,10 +1,19 @@
-﻿@model IEnumerable<FinalProject.Models.Job>
+﻿@using Microsoft.AspNet.Identity;
+@model IEnumerable<FinalProject.Models.Job>
 
 @{
     ViewBag.Title = "Index";
+    FinalProject.Models.ApplicationDbContext db = new FinalProject.Models.ApplicationDbContext();
+    string UserID = User.Identity.GetUserId();
+    int UserRole = db.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
 }
-
-<h2>Available Jobs</h2>
+@if (UserRole == 1)
+{
+    <h2>Available Jobs</h2>
+}
+else if (UserRole == 2) {
+    <h2>My Jobs</h2>
+}
 
 @*<p>
     @Html.ActionLink("Create New", "Create")
@@ -16,6 +25,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.TestAScore)
@@ -37,6 +49,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.TestAScore)
         </td>
@@ -46,11 +61,23 @@
         <td>
             @Html.DisplayFor(modelItem => item.TestCScore)
         </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
+        @if (UserRole == 1)
+        {
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.ID })                       @*APPLY*@ 
+
+            </td>
+        }
+        else if (UserRole == 2)
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        }
+
     </tr>
 }
 

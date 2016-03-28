@@ -14,5 +14,6 @@ namespace FinalProject.Models
         public int TestBScore { get; set; }
         public int TestCScore { get; set; }
         public string CompanyID { get; set; }
+        public string Company { get; set; }
     }
 }
