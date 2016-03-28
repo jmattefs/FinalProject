@@ -64,9 +64,10 @@ else if (UserRole == 2) {
         @if (UserRole == 1)
         {
             <td>
-
-                @Html.ActionLink("Details", "Details", new { id = item.ID })                       @*APPLY*@ 
-
+              
+          
+                @Html.ActionLink("Job Details", "Details", new { id = item.ID },"")                       @*APPLY*@ 
+               
             </td>
         }
         else if (UserRole == 2)

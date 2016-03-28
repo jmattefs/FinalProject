@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using System.IO;
 using Microsoft.AspNet.Identity;
 using FinalProject.Models;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace FinalProject.Controllers
 {
@@ -67,5 +70,6 @@ namespace FinalProject.Controllers
 
             return View();
         }
+        
     }
 }

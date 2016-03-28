@@ -52,6 +52,8 @@ namespace FinalProject.Models
         public System.Data.Entity.DbSet<FinalProject.Models.EI> EIs { get; set; }
 
         public System.Data.Entity.DbSet<FinalProject.Models.Job> Jobs { get; set; }
+
+ 
     }
 
 }

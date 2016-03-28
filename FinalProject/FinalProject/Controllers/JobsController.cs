@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using FinalProject.Models;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
+using System.Net.Mail;
+using System.ComponentModel.DataAnnotations;
 
 namespace FinalProject.Controllers
 {
@@ -54,7 +57,8 @@ namespace FinalProject.Controllers
             }
             return View(job);
         }
-
+       
+        
         // GET: Jobs/Create
         public ActionResult Create()
         {
@@ -148,6 +152,28 @@ namespace FinalProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Apply(int? id)
+        {
+            
+            var userid = User.Identity.GetUserId();
+            var user = db.JobSeeker.Where(x => x.UserId == userid).Select(x => x).FirstOrDefault();
+            var job = db.Jobs.Where(x => x.ID == id).Select(x => x).FirstOrDefault();
+            var jobTitle = job.Title;
+            var company = db.Employer.Where(x => x.UserId == job.CompanyID).Select(x => x).FirstOrDefault();
+            
+            var message = new MailMessage(user.Email, company.Email);
+
+            message.Subject = job.Title;
+            message.Body = "Hello" + company.Name + "," + Environment.NewLine + "My name is " + user.Name + " and I am interested in the " + job.Title + " job." + "Here is a little bit about myself: " + Environment.NewLine + user.Info + Environment.NewLine + "Please contact me at your earliest convenience.";
+            //message.Attachments.Add()    resume
+            SmtpClient mailer = new SmtpClient("smtp.gmail.com", 587);
+            mailer.Credentials = new NetworkCredential(user.Email, "jobseeker123");
+            //mailer.UseDefaultCredentials = true;
+            mailer.EnableSsl = true;
+            mailer.Send(message);
+            Job Ajob = db.Jobs.Find(id);
+            return View("Sent",Ajob);
         }
     }
 }

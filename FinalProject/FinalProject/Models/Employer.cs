@@ -16,6 +16,7 @@ namespace FinalProject.Models
         public string ZipCode { get; set; }
         public string Info { get; set; }
         public bool isSubscribed { get; set; }
+        public string Email { get; set; }
         
     }
 }
