@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FinalProject.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FinalProject.Controllers
 {
@@ -17,7 +18,26 @@ namespace FinalProject.Controllers
         // GET: Jobs
         public ActionResult Index()
         {
-            return View(db.Jobs.ToList());
+            var id = User.Identity.GetUserId();
+            var user = db.JobSeeker.Where(x => x.UserId == id).Select(x => x).FirstOrDefault();
+            int UserRole = db.Users.Where(x => x.Id == id).Select(x => x.Role).FirstOrDefault();
+            if(UserRole == 1)
+            {
+
+
+                return View(db.Jobs.Where(x => x.TestAScore <= user.Survey1Score && x.TestBScore == 0 || x.TestBScore == user.Test2ScoreINT && x.TestCScore == 0 || x.TestCScore <= user.Test3ScoreINT).ToList());
+            }
+            else if (UserRole == 2)
+            {
+                return View(db.Jobs.Where(x => x.CompanyID == id).Select(x => x).ToList());
+            }
+            else
+            {
+                return View(db.Jobs.ToList());
+            }
+
+
+            
         }
 
         // GET: Jobs/Details/5
@@ -46,10 +66,14 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Description,TestAScore,TestBScore,TestCScore")] Job job)
+        public ActionResult Create([Bind(Include = "ID,Title,Description,TestAScore,TestBScore,TestCScore, CompanyID")] Job job)
         {
             if (ModelState.IsValid)
             {
+                var id = User.Identity.GetUserId();
+                var user = db.Employer.Where(x => x.UserId == id).Select(x => x.UserId).FirstOrDefault();
+                job.CompanyID = user;
+
                 db.Jobs.Add(job);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,7 +102,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Description,TestAScore,TestBScore,TestCScore")] Job job)
+        public ActionResult Edit([Bind(Include = "ID,Title,Description,TestAScore,TestBScore,TestCScore, CompanyID")] Job job)
         {
             if (ModelState.IsValid)
             {

@@ -220,6 +220,30 @@ namespace FinalProject.Controllers
 
             var person = db.JobSeeker.Where(x => x.UserId == user).Select(x => x).FirstOrDefault();
             person.Survey3Score = Result;
+
+
+            if (Result == "Very Poor")
+            {
+                person.Test2ScoreINT = 1;
+
+            }
+            else if (Result == "Poor")
+            {
+                person.Test2ScoreINT = 2;
+            }
+            else if (Result == "Average")
+            {
+                person.Test2ScoreINT = 3;
+            }
+            else if (Result == "Good")
+            {
+                person.Test2ScoreINT = 4;
+            }
+            else if (Result == "Excellent")
+            {
+                person.Test2ScoreINT = 5;
+            }
+
             db.SaveChanges();
 
             return View();

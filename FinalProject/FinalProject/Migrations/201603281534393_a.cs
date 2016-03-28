@@ -3,7 +3,7 @@ namespace FinalProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class a : DbMigration
     {
         public override void Up()
         {
@@ -52,22 +52,6 @@ namespace FinalProject.Migrations
                         ZipCode = c.String(),
                         Info = c.String(),
                         isSubscribed = c.Boolean(nullable: false),
-                        Job_ID = c.Int(),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Jobs", t => t.Job_ID)
-                .Index(t => t.Job_ID);
-            
-            CreateTable(
-                "dbo.Jobs",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Description = c.String(),
-                        TestAScore = c.Int(nullable: false),
-                        TestBScore = c.String(),
-                        TestCScore = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -81,10 +65,25 @@ namespace FinalProject.Migrations
                 .PrimaryKey(t => t.FileID);
             
             CreateTable(
+                "dbo.Jobs",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Title = c.String(),
+                        Description = c.String(),
+                        TestAScore = c.Int(nullable: false),
+                        TestBScore = c.Int(nullable: false),
+                        TestCScore = c.Int(nullable: false),
+                        CompanyID = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
                 "dbo.JobSeekers",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        Email = c.String(),
                         UserId = c.String(),
                         Name = c.String(),
                         Address = c.String(),
@@ -99,6 +98,9 @@ namespace FinalProject.Migrations
                         Survey3Score = c.String(),
                         Survey3Complete = c.Boolean(nullable: false),
                         ResumeID = c.Int(nullable: false),
+                        UploadedResume = c.Boolean(nullable: false),
+                        Test2ScoreINT = c.Int(nullable: false),
+                        Test3ScoreINT = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -204,14 +206,12 @@ namespace FinalProject.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Employers", "Job_ID", "dbo.Jobs");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Employers", new[] { "Job_ID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -219,8 +219,8 @@ namespace FinalProject.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Personalities");
             DropTable("dbo.JobSeekers");
-            DropTable("dbo.Files");
             DropTable("dbo.Jobs");
+            DropTable("dbo.Files");
             DropTable("dbo.Employers");
             DropTable("dbo.EIs");
             DropTable("dbo.Aptitudes");

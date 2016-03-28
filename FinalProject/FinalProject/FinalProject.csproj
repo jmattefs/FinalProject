@@ -207,29 +207,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603251718378_first.cs" />
-    <Compile Include="Migrations\201603251718378_first.Designer.cs">
-      <DependentUpon>201603251718378_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603251731020_nns.cs" />
-    <Compile Include="Migrations\201603251731020_nns.Designer.cs">
-      <DependentUpon>201603251731020_nns.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603252053217_masdfdsa.cs" />
-    <Compile Include="Migrations\201603252053217_masdfdsa.Designer.cs">
-      <DependentUpon>201603252053217_masdfdsa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603252059207_initial.cs" />
-    <Compile Include="Migrations\201603252059207_initial.Designer.cs">
-      <DependentUpon>201603252059207_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603252131333_n.cs" />
-    <Compile Include="Migrations\201603252131333_n.Designer.cs">
-      <DependentUpon>201603252131333_n.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603252208046_nasns.cs" />
-    <Compile Include="Migrations\201603252208046_nasns.Designer.cs">
-      <DependentUpon>201603252208046_nasns.cs</DependentUpon>
+    <Compile Include="Migrations\201603281534393_a.cs" />
+    <Compile Include="Migrations\201603281534393_a.Designer.cs">
+      <DependentUpon>201603281534393_a.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -355,23 +335,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603251718378_first.resx">
-      <DependentUpon>201603251718378_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603251731020_nns.resx">
-      <DependentUpon>201603251731020_nns.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603252053217_masdfdsa.resx">
-      <DependentUpon>201603252053217_masdfdsa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603252059207_initial.resx">
-      <DependentUpon>201603252059207_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603252131333_n.resx">
-      <DependentUpon>201603252131333_n.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603252208046_nasns.resx">
-      <DependentUpon>201603252208046_nasns.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603281534393_a.resx">
+      <DependentUpon>201603281534393_a.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

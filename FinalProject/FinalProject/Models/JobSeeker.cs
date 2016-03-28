@@ -25,6 +25,8 @@ namespace FinalProject.Models
         public bool Survey3Complete { get; set; }
         public int ResumeID { get; set; }
         public bool UploadedResume { get; set; }
-        
+        public int Test2ScoreINT { get; set; }
+        public int Test3ScoreINT { get; set; }
+
     }
 }

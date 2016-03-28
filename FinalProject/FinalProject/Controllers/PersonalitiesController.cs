@@ -186,6 +186,29 @@ namespace FinalProject.Controllers
 
             var person = db.JobSeeker.Where(x => x.UserId == user).Select(x => x).FirstOrDefault();
             person.Survey2Score = Result;
+
+            if(Result == "Open")
+            {
+                person.Test2ScoreINT = 1;
+
+            } else if (Result == "Conscientous")
+            {
+                person.Test2ScoreINT = 2;
+            }
+            else if (Result == "Extrovert")
+            {
+                person.Test2ScoreINT = 3;
+            }
+            else if (Result == "Agreeable")
+            {
+                person.Test2ScoreINT = 4;
+            }
+            else if (Result == "Neurotic")
+            {
+                person.Test2ScoreINT = 5;
+            }
+
+
             db.SaveChanges();
 
             return View();
