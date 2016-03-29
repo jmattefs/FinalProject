@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201603282034169_n.Designer.cs">
       <DependentUpon>201603282034169_n.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603291448055_asdffds.cs" />
+    <Compile Include="Migrations\201603291448055_asdffds.Designer.cs">
+      <DependentUpon>201603291448055_asdffds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Aptitude.cs" />
@@ -332,6 +336,8 @@
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Jobs\Sent.cshtml" />
+    <Content Include="Views\JobSeekers\Contact.cshtml" />
+    <Content Include="Views\JobSeekers\Sent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603282034169_n.resx">
       <DependentUpon>201603282034169_n.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603291448055_asdffds.resx">
+      <DependentUpon>201603291448055_asdffds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

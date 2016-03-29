@@ -16,7 +16,7 @@ namespace FinalProject.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string Info { get; set; }
-        //public File Resume { get; set; }
+        
         public int Survey1Score { get; set; }
         public bool Survey1Complete { get; set; }
         public string Survey2Score { get; set; }
@@ -27,6 +27,8 @@ namespace FinalProject.Models
         public bool UploadedResume { get; set; }
         public int Test2ScoreINT { get; set; }
         public int Test3ScoreINT { get; set; }
+
+        public string EmailMessage { get; set; }
 
     }
 }

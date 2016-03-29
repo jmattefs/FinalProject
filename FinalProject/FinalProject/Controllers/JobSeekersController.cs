@@ -8,12 +8,63 @@ using System.Web;
 using System.Web.Mvc;
 using FinalProject.Models;
 using Microsoft.AspNet.Identity;
+using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace FinalProject.Controllers
 {
     public class JobSeekersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+
+
+
+        public ActionResult Contact(int? id)
+        {
+            JobSeeker js = db.JobSeeker.Find(id);
+            return View(js);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Contact(JobSeeker js)
+        {
+            if (ModelState.IsValid)
+            {
+                var id = User.Identity.GetUserId();
+                var sender = db.Employer.Where(x => x.UserId == id).Select(x => x).FirstOrDefault();
+                var senderEmail = sender.Email;
+                var seekerID = js.ID;
+                
+                var message = new MailMessage();
+                message.To.Add(new MailAddress("recipient@gmail.com"));  // replace with valid value 
+                message.From = new MailAddress(senderEmail);  // replace with valid value
+                message.Subject = "Job Opportunity";
+                message.Body = string.Format(js.EmailMessage);
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "genericemployer@gmail.com", 
+                        Password = "employer123"  
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    await smtp.SendMailAsync(message);
+                    JobSeeker jobseeker = db.JobSeeker.Find(seekerID);
+                    return RedirectToAction("Sent",jobseeker);
+                }
+            }
+            return View(js);
+        }
+        public ActionResult Sent()
+        {
+            return View();
+        }
 
         // GET: JobSeekers
         public ActionResult Index(string sortOrder)
