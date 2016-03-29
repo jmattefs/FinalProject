@@ -44,7 +44,7 @@ if (User.Identity.GetUserId() == null)
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Employers!</h2>
+            <h2><img src="~/Images/Employers_word_363x65.png" height="50" /></h2>
             <p>Register today to find your next great employee. Subscribe to our premium service in order to make that process even easier. Choose "Employer" during the registration process. </p>
             <p>
                 @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-success" })
@@ -52,73 +52,91 @@ if (User.Identity.GetUserId() == null)
             </p>
         </div>
         <div class="col-md-4">
-            <h2><img src="~/Images/Job_Seekers_Premium.png" height="50" /></h2>
+            <h2><img src="~/Images/Job_Seekers_Premium_363x65.png" width="434" /></h2>
             <p>For employers we also offer a premium service that will help you to find the perfect employee for the position you are trying to fill. This will allow you to directly contact jobseekers and sort them by criteria determined by you! Register for free and return to this page to sign up.</p>
             
         </div>
     </div>
-}
-if (UserRole == 1)
-{
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Upload your Resume</h2>
+    }
+    if (UserRole == 1)
+    {
 
-            @if (UploadedResume == false)
-            {
-                <p>
-                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        <input type="file" name="file" id="file"  />
-                        <br>
-                        <input type="submit" name="submit" value="Upload" />
-                    }
-                </p>
-            }
-            else if (UploadedResume == true)
-            {
-                <p>
-                    <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">            @*CHANGE THIS*@
-                </p>
-            }
-
-
+        <div class="row">
+            <div class="col-md-4">
+                @if (UploadedResume == false)
+                {
+                    <h2>Upload your Resume</h2>
+                                    <p>
+                                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                         {
+                                            <input type="file" name="file" id="file" />
+                                            <br>
+                                            <input type="submit" name="submit" value="Upload" />
+                                        }
+                                    </p>
+                }
+                else if (UploadedResume == true)
+                {
+                    <h2>Resume: Uploaded</h2>
+                }
+            </div>
+            <div class="col-md-4">
+                @if (Info == null)
+                {
+                    <h2>Update your Profile</h2>
+                    <p>
+                        Click on "MyProfile" and then "Edit" to give a brief introduction to employers under the "Info" section.
+                    </p>
+                }
+                else
+                {
+                    <h2>Profile: Updated</h2>
+                }
+            </div>
+            <div class="col-md-4">
+                @if(TestA == true && TestB == true && TestC == true)
+                {
+                    <h2>Tests: Completed</h2>
+                }
+                else
+                {
+                    <h2>Take the Tests</h2>
+                    <p>
+                        On your profile page, take the three tests provided to let an employer know what jobs are best-suited for you.
+                    </p>
+                }
+            </div>
         </div>
-        
-        <div class="col-md-4">
-            <h2>Update your Profile</h2>
+        <div class="progress progress-striped active">
+            @if (UploadedResume == true)
+            {
+                <div class="progress-bar progress-bar-info" style="width: 33.3%"></div>
+            }
+            else
+            {
+                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
+            }
             @if (Info == null)
             {
-                <p>
-                    Click on "MyProfile" and then "Edit" to give a brief introduction to employers under the "Info" section.
-                </p>
+                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
             }
-            else
+            else if(Info != null)
             {
-                <p>
-                    <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">
-                </p>
+                <div class="progress-bar progress-bar-info" style="width: 33.3%"></div>
             }
-
-        </div>
-        <div class="col-md-4">
-            <h2>Take the Tests</h2>
             @if (TestA == true && TestB == true && TestC == true)
             {
-                <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">
+                <div class="progress-bar progress-bar-info" style="width: 33.3%"></div>
             }
             else
             {
-                <p>
-                    On your profile page, take the three tests provided to let an employer know what jobs are best-suited for you.
-                </p>
+                <div class="progress-bar progress-bar-info" style="width: 0%"></div>
             }
 
         </div>
-    </div>
-}
-       if (UserRole == 2 && Subscription == false)
-        {
+    }
+    if (UserRole == 2 && Subscription == false)
+    {
             <div class="row">
                 <div class="col-md-4">
                     <h2>Upgrade your account</h2>
