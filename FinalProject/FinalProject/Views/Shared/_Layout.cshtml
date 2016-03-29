@@ -27,15 +27,20 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*@Html.ActionLink("Jobseekers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-                <img src="~/Images/120x40_green.jpg" height="40" width="120"/>
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="@Url.Content("~/Images/120x40_green.jpg")" height="40" width="120" />
+                </a>
+                
+                @*<img src="~/Images/120x40_green.jpg" height="40" width="120"/>*@
+
             </div>
 
             @if (UserRole == 1  @*jobseeker*@)
             {
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("MyProfile", "Details", "JobSeekers")</li>                     
+                        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                        <li>@Html.ActionLink("MyProfile", "Details", "JobSeekers")</li>
                         <li>@Html.ActionLink("Jobs", "Index", "Jobs")</li>                    @*Jobs*@
                     </ul>
                     @Html.Partial("_LoginPartial")
@@ -60,8 +65,8 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("My Jobs", "Index", "Jobs")</li>                    @*Applicants*@
-                        <li>@Html.ActionLink("JobSeekers", "List", "Jobseekers")</li>
-                        <li>@Html.ActionLink("Post a Job", "Create", "Jobs")</li> 
+                        <li>@Html.ActionLink("JobSeekers Premium", "List", "Jobseekers")</li>
+                        <li>@Html.ActionLink("Post a Job", "Create", "Jobs")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

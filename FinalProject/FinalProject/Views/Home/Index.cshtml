@@ -33,7 +33,7 @@ if (User.Identity.GetUserId() == null)
 {
     <div class="row">
         <div class="col-md-4">
-            <h2>JobSeekers!</h2>
+            <h2><img src="~/Images/Job_Seekers_words_363x65 copy.png" height="40"/></h2>
             <p>
                 Register today and take the first step on your path to becoming a person with a job.
             </p>
@@ -52,7 +52,7 @@ if (User.Identity.GetUserId() == null)
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Premium</h2>
+            <h2><img src="~/Images/Job_Seekers_Premium.png" height="50" /></h2>
             <p>For employers we also offer a premium service that will help you to find the perfect employee for the position you are trying to fill. This will allow you to directly contact jobseekers and sort them by criteria determined by you! Register for free and return to this page to sign up.</p>
             
         </div>
@@ -63,6 +63,7 @@ if (UserRole == 1)
     <div class="row">
         <div class="col-md-4">
             <h2>Upload your Resume</h2>
+
             @if (UploadedResume == false)
             {
                 <p>

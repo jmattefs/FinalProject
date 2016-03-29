@@ -252,6 +252,8 @@
     <Content Include="Images\120x40_green.jpg" />
     <Content Include="Images\blue.jpg" />
     <Content Include="Images\green.jpg" />
+    <Content Include="Images\Job_Seekers_Premium.png" />
+    <Content Include="Images\Job_Seekers_words_363x65 copy.png" />
     <Content Include="Images\js.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
