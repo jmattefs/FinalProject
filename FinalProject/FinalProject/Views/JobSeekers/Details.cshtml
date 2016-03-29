@@ -12,7 +12,7 @@
 <h2>@Html.DisplayFor(model => model.Name)'s Profile</h2>
 @if (UserRole == 1)
 {
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID })  @*only for this person*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-default" })  @*only for this person*@
 }
 
 <div>
@@ -100,8 +100,38 @@
                 <br />
                 @Html.ActionLink("Take Test C", "Create", "EIs", "", new { @class = "btn btn-warning" })
             }
+            <br />
 
         }
+        <br />
+        <div class="progress progress-striped active">
+            @if (Model.Survey1Complete == true)
+            {
+                <div class="progress-bar progress-bar-info" style="width: 33.3%"></div>
+            }
+            else
+            {
+                <div class="progress-bar progress-bar-info" style="width:0%"></div>
+            }
+            @if (Model.Survey2Complete == true)
+            {
+                <div class="progress-bar progress-bar-success" style="width: 33.3%"></div>
+            }
+            else
+            {
+                <div class="progress-bar progress-bar-success" style="width:0%"></div>
+            }
+            @if (Model.Survey3Complete == true)
+            {
+                <div class="progress-bar progress-bar-warning" style="width: 33.3%"></div>
+            }
+            else
+            {
+                <div class="progress-bar progress-bar-warning" style="width:0%"></div>
+            }
+
+            
+        </div>
     }
 
              @*GO TO SURVEYS*@

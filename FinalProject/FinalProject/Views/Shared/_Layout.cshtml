@@ -18,7 +18,7 @@
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,7 +26,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Jobseekers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Jobseekers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <img src="~/Images/120x40_green.jpg" height="40" width="120"/>
             </div>
 
             @if (UserRole == 1  @*jobseeker*@)
@@ -39,6 +40,7 @@
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
+
             }
             else if (UserRole == 2 && user.isSubscribed == false  /*employer*/)
             {
@@ -46,7 +48,7 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("My Jobs", "Index", "Jobs")</li>                     @*Applicants*@
-                        <li>@Html.ActionLink("Jobseekers", "Index", "Jobseekers")</li>
+                        <li>@Html.ActionLink("JobSeekers", "Index", "Jobseekers")</li>
                         <li>@Html.ActionLink("Post a Job", "Create", "Jobs")</li>
                     </ul>
                   @Html.Partial("_LoginPartial")
@@ -58,7 +60,7 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("My Jobs", "Index", "Jobs")</li>                    @*Applicants*@
-                        <li>@Html.ActionLink("Jobseekers", "List", "Jobseekers")</li>
+                        <li>@Html.ActionLink("JobSeekers", "List", "Jobseekers")</li>
                         <li>@Html.ActionLink("Post a Job", "Create", "Jobs")</li> 
                     </ul>
                     @Html.Partial("_LoginPartial")

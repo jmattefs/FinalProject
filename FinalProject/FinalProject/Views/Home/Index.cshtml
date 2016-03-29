@@ -21,11 +21,11 @@
 
 
 <div class="jumbotron">
-
     
-    <h1>Job website</h1>
-    <p class="lead">Job-related words will go here</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <img src="~/Images/js.jpg" style="width:100%; height:100%; border-radius:4px" />
+    
+    
+    
 </div>
 
 
@@ -33,13 +33,13 @@ if (User.Identity.GetUserId() == null)
 {
     <div class="row">
         <div class="col-md-4">
-            <h2>Jobseekers!</h2>
+            <h2>JobSeekers!</h2>
             <p>
                 Register today and take the first step on your path to becoming a person with a job.
             </p>
 
             <p>
-                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
+                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-success" })
 
             </p>
         </div>
@@ -47,7 +47,7 @@ if (User.Identity.GetUserId() == null)
             <h2>Employers!</h2>
             <p>Register today to find your next great employee. Subscribe to our premium service in order to make that process even easier. Choose "Employer" during the registration process. </p>
             <p>
-                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
+                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-success" })
 
             </p>
         </div>
@@ -68,7 +68,7 @@ if (UserRole == 1)
                 <p>
                     @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        <input type="file" name="file" id="file" />
+                        <input type="file" name="file" id="file"  />
                         <br>
                         <input type="submit" name="submit" value="Upload" />
                     }
@@ -77,10 +77,27 @@ if (UserRole == 1)
             else if (UploadedResume == true)
             {
                 <p>
-                    <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">
+                    <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">            @*CHANGE THIS*@
                 </p>
             }
 
+
+        </div>
+        
+        <div class="col-md-4">
+            <h2>Update your Profile</h2>
+            @if (Info == null)
+            {
+                <p>
+                    Click on "MyProfile" and then "Edit" to give a brief introduction to employers under the "Info" section.
+                </p>
+            }
+            else
+            {
+                <p>
+                    <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">
+                </p>
+            }
 
         </div>
         <div class="col-md-4">
@@ -92,35 +109,18 @@ if (UserRole == 1)
             else
             {
                 <p>
-                    On your profile page, take the three tests provided to let an employer know what jobs fit you best.
-                </p>
-            }
-            
-        </div>
-        <div class="col-md-4">
-            <h2>Update your Profile</h2>
-            @if (Info == null)
-            {
-                <p>
-                    Click on "MyProfile" and then click "Edit" to give a brief introduction to employers under the "Info" section.
-                </p>
-            }
-            else
-            {
-                <p>
-                    <img style='height:275px; width:275px' src="@Url.Content("http://www.clipartbest.com/cliparts/yio/eza/yioezaABT.jpeg")">
+                    On your profile page, take the three tests provided to let an employer know what jobs are best-suited for you.
                 </p>
             }
 
         </div>
-
     </div>
 }
        if (UserRole == 2 && Subscription == false)
         {
             <div class="row">
                 <div class="col-md-4">
-                    <h2>Buy a Premium Account</h2>
+                    <h2>Upgrade your account</h2>
                     <p>If you would like to have access to more information, purchase our premium service.  This will allow you to filter jobseekers by aptitude, personality types, and emotional intelligence.</p>
 
                 </div>
@@ -144,28 +144,37 @@ if (UserRole == 1)
             }
         }
                 @*<div class="row">
-                        <div class="col-md-4">
-                            <h2>Jobseekers!</h2>
-                            <p>
-                                Register today and take the first step on your path to becoming a person with a job.
-                            </p>
+                            <div class="col-md-4">
+                                <h2>Jobseekers!</h2>
+                                <p>
+                                    Register today and take the first step on your path to becoming a person with a job.
+                                </p>
 
-                            <p>
-                                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
+                                <p>
+                                    @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
 
-                            </p>
-                        </div>
-                        <div class="col-md-4">
-                            <h2>Employers!</h2>
-                            <p>Register today to find your next great employee. Subscribe to our premium service in order to make that process even easier. Choose "Employer" during the registration process. </p>
-                            <p>
-                                @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
 
-                            </p>
-                        </div>
-                        <div class="col-md-4">
-                            <h2>Premium</h2>
-                            <p>We offer a premium service that will help you to find the perfect employee for the position you are trying to fill. This allows you to contact jobseekers and sort them by criteria determined by you! </p>
-                            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-                        </div>
-                    </div>*@
+
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: 33.3%"></div>
+      <div class="progress-bar progress-bar-warning" style="width: 33.3%"></div>
+      <div class="progress-bar progress-bar-danger" style="width: 33.3%"></div>
+    </div>
+
+
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h2>Employers!</h2>
+                                <p>Register today to find your next great employee. Subscribe to our premium service in order to make that process even easier. Choose "Employer" during the registration process. </p>
+                                <p>
+                                    @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-info" })
+
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h2>Premium</h2>
+                                <p>We offer a premium service that will help you to find the perfect employee for the position you are trying to fill. This allows you to contact jobseekers and sort them by criteria determined by you! </p>
+                                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                            </div>
+                        </div>*@

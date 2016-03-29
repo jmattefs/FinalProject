@@ -249,6 +249,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\120x40_green.jpg" />
+    <Content Include="Images\blue.jpg" />
+    <Content Include="Images\green.jpg" />
     <Content Include="Images\js.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
