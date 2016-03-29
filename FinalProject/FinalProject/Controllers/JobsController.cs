@@ -155,25 +155,25 @@ namespace FinalProject.Controllers
         }
         public ActionResult Apply(int? id)
         {
-            
+
             var userid = User.Identity.GetUserId();
             var user = db.JobSeeker.Where(x => x.UserId == userid).Select(x => x).FirstOrDefault();
             var job = db.Jobs.Where(x => x.ID == id).Select(x => x).FirstOrDefault();
             var jobTitle = job.Title;
             var company = db.Employer.Where(x => x.UserId == job.CompanyID).Select(x => x).FirstOrDefault();
-            
+            var resume = db.File.Where(x => x.FileName == userid).Select(x => x.FileName).FirstOrDefault();
             var message = new MailMessage(user.Email, company.Email);
 
             message.Subject = job.Title;
-            message.Body = "Hello" + company.Name + "," + Environment.NewLine + "My name is " + user.Name + " and I am interested in the " + job.Title + " job." + "Here is a little bit about myself: " + Environment.NewLine + user.Info + Environment.NewLine + "Please contact me at your earliest convenience.";
-            //message.Attachments.Add()    resume
+            message.Body = "Hello " + company.Name + "," + Environment.NewLine + Environment.NewLine + "My name is " + user.Name + " and I am interested in the " + job.Title + " job." + "  Here is a little bit about myself: " + Environment.NewLine + user.Info + Environment.NewLine + "Please contact me at your earliest convenience.";
+            message.Attachments.Add(new Attachment(HttpContext.Server.MapPath("~/Resumes/" + resume + ".pdf")));
             SmtpClient mailer = new SmtpClient("smtp.gmail.com", 587);
             mailer.Credentials = new NetworkCredential(user.Email, "jobseeker123");
             //mailer.UseDefaultCredentials = true;
             mailer.EnableSsl = true;
             mailer.Send(message);
             Job Ajob = db.Jobs.Find(id);
-            return View("Sent",Ajob);
+            return View("Sent", Ajob);
         }
     }
 }
