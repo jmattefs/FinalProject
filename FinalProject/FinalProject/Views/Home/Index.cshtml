@@ -38,18 +38,18 @@ if (User.Identity.GetUserId() == null)
                 Register today and take the first step on your path to becoming a person with a job.
             </p>
 
-            <p>
+            @*<p>
                 @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-success" })
 
-            </p>
+            </p>*@
         </div>
         <div class="col-md-4">
             <h2><img src="~/Images/Employers_word_363x65.png" height="50" /></h2>
             <p>Register today to find your next great employee. Subscribe to our premium service in order to make that process even easier. Choose "Employer" during the registration process. </p>
-            <p>
+            @*<p>
                 @Html.ActionLink("Register", "Register", "Account", "", new { @class = "btn btn-success" })
 
-            </p>
+            </p>*@
         </div>
         <div class="col-md-4">
             <h2><img src="~/Images/Job_Seekers_Premium_363x65.png" width="434" /></h2>
@@ -72,6 +72,8 @@ if (User.Identity.GetUserId() == null)
                                             <input type="file" name="file" id="file" />
                                             <br>
                                             <input type="submit" name="submit" value="Upload" />
+
+
                                         }
                                     </p>
                 }
@@ -107,7 +109,7 @@ if (User.Identity.GetUserId() == null)
                 }
             </div>
         </div>
-        <div class="progress progress-striped active">
+        <div class="progress">
             @if (UploadedResume == true)
             {
                 <div class="progress-bar progress-bar-info" style="width: 33.3%"></div>

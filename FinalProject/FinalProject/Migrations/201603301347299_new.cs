@@ -3,7 +3,7 @@ namespace FinalProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class a : DbMigration
+    public partial class _new : DbMigration
     {
         public override void Up()
         {
@@ -52,6 +52,7 @@ namespace FinalProject.Migrations
                         ZipCode = c.String(),
                         Info = c.String(),
                         isSubscribed = c.Boolean(nullable: false),
+                        Email = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -75,6 +76,7 @@ namespace FinalProject.Migrations
                         TestBScore = c.Int(nullable: false),
                         TestCScore = c.Int(nullable: false),
                         CompanyID = c.String(),
+                        Company = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -101,6 +103,7 @@ namespace FinalProject.Migrations
                         UploadedResume = c.Boolean(nullable: false),
                         Test2ScoreINT = c.Int(nullable: false),
                         Test3ScoreINT = c.Int(nullable: false),
+                        EmailMessage = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             
