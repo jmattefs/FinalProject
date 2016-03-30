@@ -245,7 +245,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info, UserId, ResumeID, UploadedResume, Email")] JobSeeker jobSeeker)
+        public ActionResult Edit([Bind(Include = "ID,Name,Address,City,State,ZipCode,Info, UserId, ResumeID, UploadedResume, Survey1Complete, Survey2Complete, Survey3Complete, Survey1Score, Survey2Score, Survey3Score, Email")] JobSeeker jobSeeker)
         {
             if (ModelState.IsValid)
             {

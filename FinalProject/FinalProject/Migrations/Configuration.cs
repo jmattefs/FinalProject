@@ -27,7 +27,7 @@ namespace FinalProject.Migrations
                 new Employer { Name = "CompanyA", Address = "1123 N 75 st", City = "Milwaukee", State = "WI", ZipCode = "53209", Info = "We are a great company to work for!", UserId = "aaazaazanfn39392" , ID= 1},
                   new Employer { Name = "CompanyB", Address = "23 N 85 st", City = "New Berlin", State = "WI", ZipCode = "53209", Info = "We pay our employees lots of money", UserId = "bbbaazanfn39392", ID=2, },
                     new Employer { Name = "CompanyC", Address = "333 N 115 st", City = "Brown Deer", State = "WI", ZipCode = "53223", Info = "We make super cool things at CompanyC", UserId = "cccaza39392", ID=3 },
-                     new Employer { Name = "CompanyD", Email = "genericemployer@gmail.com", Address = "333 N 115 st", City = "Brown Deer", State = "WI", ZipCode = "53223", Info = "We do great things here at CompanyXYZ", UserId = "ddddaza39392", ID = 3 }
+                     new Employer { Name = "CompanyD", Email = "genericemployer@gmail.com", Address = "333 N 115 st", City = "Brown Deer", State = "WI", ZipCode = "53223", Info = "We do great things here at CompanyXYZ", UserId = "ddddaza39392", ID = 3, isSubscribed= false }
                 );
             UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(context);
             UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(userStore);

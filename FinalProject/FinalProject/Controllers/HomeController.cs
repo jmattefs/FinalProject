@@ -70,6 +70,13 @@ namespace FinalProject.Controllers
 
             return View();
         }
-        
+        public ActionResult Upload()
+        {
+            return View();
+        }
+        public ActionResult Premium()
+        {
+            return View();
+        }
     }
 }

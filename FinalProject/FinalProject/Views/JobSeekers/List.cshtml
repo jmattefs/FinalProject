@@ -17,35 +17,35 @@
 <table class="table table-hover table-striped" style="margin-top:20px">
     <tr>
 
-        <th>
-            @Html.ActionLink("Name", "List", new { sortOrder = ViewBag.NameSortParm })
+        <th style="background-color:#2B3E50">
+            @Html.ActionLink("Name", "List", new { sortOrder = ViewBag.NameSortParm }, new {@class = "action add", title="Click to Sort"})
         </th>
 
-        <th style="text-align:center">
-            @Html.ActionLink("City", "List", new { sortOrder = ViewBag.CitySortParm })
+        <th style="text-align:center; background-color:#2B3E50">
+            @Html.ActionLink("City", "List", new { sortOrder = ViewBag.CitySortParm }, new { @class = "action add", title = "Click to Sort" })
         </th>
-        <th>
-            @Html.ActionLink("State", "List", new { sortOrder = ViewBag.StateSortParm })
+        <th style="background-color:#2B3E50">
+            @Html.ActionLink("State", "List", new { sortOrder = ViewBag.StateSortParm }, new { @class = "action add", title = "Click to Sort" })
         </th>
-        <th>
-            @Html.ActionLink("Zip Code", "List", new { sortOrder = ViewBag.ZipCodeSortParm })
-        </th>
-
-        <th>
-            @Html.ActionLink("Aptitude Score", "List", new { sortOrder = ViewBag.TestASortParm })
+        <th style="background-color:#2B3E50">
+            @Html.ActionLink("Zip Code", "List", new { sortOrder = ViewBag.ZipCodeSortParm }, new { @class = "action add", title = "Click to Sort" })
         </th>
 
-        <th>
-            @Html.ActionLink("Personality Type", "List", new { sortOrder = ViewBag.TestBSortParm })
+        <th style="background-color:#2B3E50">
+            @Html.ActionLink("Aptitude Score", "List", new { sortOrder = ViewBag.TestASortParm }, new { @class = "action add", title = "Click to Sort" })
         </th>
 
-        <th>
-            @Html.ActionLink("Emotional Intelligence", "List", new { sortOrder = ViewBag.TestCSortParm })
+        <th style="background-color:#2B3E50">
+            @Html.ActionLink("Personality Type", "List", new { sortOrder = ViewBag.TestBSortParm }, new { @class = "action add", title = "Click to Sort" })
         </th>
-        <th style="text-align:center">
+
+        <th style="background-color:#2B3E50">
+            @Html.ActionLink("Emotional Intelligence", "List", new { sortOrder = ViewBag.TestCSortParm }, new { @class = "action add", title = "Click to Sort" })
+        </th>
+        <th style="text-align:center; background-color:#2B3E50">
             <u>Information</u>
         </th>
-        <th style="text-align:center">
+        <th style="text-align:center; background-color:#2B3E50">
             <u> Email</u>
         </th>
 
@@ -97,3 +97,4 @@
 }
 
 </table>
+For more information about test scores @Html.ActionLink("Click Here", "TestInfo","Employers","", new { @class = "btn btn-default btn-xs" })

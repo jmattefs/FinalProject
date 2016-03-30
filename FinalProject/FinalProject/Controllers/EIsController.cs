@@ -314,5 +314,9 @@ namespace FinalProject.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult TestView()
+        {
+            return View();
+        }
     }
 }

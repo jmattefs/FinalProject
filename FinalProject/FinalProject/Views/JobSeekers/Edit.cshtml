@@ -22,6 +22,14 @@
         @Html.HiddenFor(model => model.Survey2Complete)
         @Html.HiddenFor(model => model.Survey3Complete)
         @Html.HiddenFor(model=> model.UploadedResume)
+        @Html.HiddenFor(model=>model.ResumeID)
+        @Html.HiddenFor(model => model.Survey1Score)
+        @Html.HiddenFor(model => model.Survey2Score)
+        @Html.HiddenFor(model => model.Survey3Score)
+        @Html.HiddenFor(model => model.Test2ScoreINT)
+        @Html.HiddenFor(model => model.Test3ScoreINT)
+      
+
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

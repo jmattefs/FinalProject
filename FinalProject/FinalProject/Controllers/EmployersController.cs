@@ -16,7 +16,10 @@ namespace FinalProject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
 
-
+        public ActionResult TestInfo()
+        {
+            return View();
+        }
         public ActionResult ThankYou()
         {
             var id = User.Identity.GetUserId();

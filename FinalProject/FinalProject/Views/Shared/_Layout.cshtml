@@ -64,9 +64,10 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("My Jobs", "Index", "Jobs")</li>                    @*Applicants*@
-                        <li>@Html.ActionLink("JobSeekers Premium", "List", "Jobseekers")</li>
+                        <li>@Html.ActionLink("My Jobs", "Index", "Jobs")</li>                    @*Applicants*@                      
                         <li>@Html.ActionLink("Post a Job", "Create", "Jobs")</li>
+                        <li>@Html.ActionLink("JobSeekers Premium", "List", "Jobseekers")</li>
+                        <li>@Html.ActionLink("Test Information", "TestInfo", "Employers")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -82,7 +83,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - JobSeekers</p>
         </footer>
     </div>
 

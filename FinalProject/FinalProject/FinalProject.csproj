@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201603301347299_new.Designer.cs">
       <DependentUpon>201603301347299_new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603301536379_newf.cs" />
+    <Compile Include="Migrations\201603301536379_newf.Designer.cs">
+      <DependentUpon>201603301536379_newf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Aptitude.cs" />
@@ -331,6 +335,12 @@
     <Content Include="Views\Jobs\Sent.cshtml" />
     <Content Include="Views\JobSeekers\Contact.cshtml" />
     <Content Include="Views\JobSeekers\Sent.cshtml" />
+    <Content Include="Views\Home\Upload.cshtml" />
+    <Content Include="Views\Home\Premium.cshtml" />
+    <Content Include="Views\Employers\TestInfo.cshtml" />
+    <Content Include="Views\Aptitudes\TestView.cshtml" />
+    <Content Include="Views\EIs\TestView.cshtml" />
+    <Content Include="Views\Personalities\TestView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -350,6 +360,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603301347299_new.resx">
       <DependentUpon>201603301347299_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603301536379_newf.resx">
+      <DependentUpon>201603301536379_newf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -66,20 +66,14 @@ if (User.Identity.GetUserId() == null)
                 @if (UploadedResume == false)
                 {
                     <h2>Upload your Resume</h2>
-                                    <p>
-                                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                         {
-                                            <input type="file" name="file" id="file" />
-                                            <br>
-                                            <input type="submit" name="submit" value="Upload" />
-
-
-                                        }
+                                    <p >
+                                       
+                                        @Html.ActionLink("Upload", "Upload", "", new { @class = "btn btn-success btn-lg " })
                                     </p>
                 }
                 else if (UploadedResume == true)
                 {
-                    <h2>Resume: Uploaded</h2>
+                    <h2>Resume: Uploaded <span class="glyphicon glyphicon-ok"></span></h2>
                 }
             </div>
             <div class="col-md-4">
@@ -92,13 +86,13 @@ if (User.Identity.GetUserId() == null)
                 }
                 else
                 {
-                    <h2>Profile: Updated</h2>
+                    <h2>Profile: Updated <span class="glyphicon glyphicon-ok"></span></h2>
                 }
             </div>
             <div class="col-md-4">
                 @if(TestA == true && TestB == true && TestC == true)
                 {
-                    <h2>Tests: Completed</h2>
+                    <h2>Tests: Completed <span class="glyphicon glyphicon-ok"></span></h2>
                 }
                 else
                 {
@@ -141,22 +135,16 @@ if (User.Identity.GetUserId() == null)
     {
             <div class="row">
                 <div class="col-md-4">
-                    <h2>Upgrade your account</h2>
-                    <p>If you would like to have access to more information, purchase our premium service.  This will allow you to filter jobseekers by aptitude, personality types, and emotional intelligence.</p>
+                    <h2><span class="glyphicon glyphicon-star-empty"></span> Upgrade to Premium <span class="glyphicon glyphicon-star-empty"></span></h2>
+                    <p style="width:324px">
+                        For more information about our premium service, click "Go Premium".
+                    </p>
 
                 </div>
                 <div class="col-md-4">
                    <br /><br /><br />
-                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-">
-                        <input type="hidden" name="return" value="http://localhost:44141/Employers/ThankYou">   
-                        <input type="hidden" name="cbt" value="Return to jobwebsite.com" src="http://localhost:44141/Employers/ThankYou" />      
-                                                                    @*//Change this ^*@
-                        <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                        <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                    </form>
+
+                    @Html.ActionLink("Go Premium", "Premium", "", new {@class = "btn btn-danger"} )
 
 
 

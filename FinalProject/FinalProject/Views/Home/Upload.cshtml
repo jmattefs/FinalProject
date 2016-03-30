@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload your Resume</h2>
+
+<hr />
+<div style="width: 575px">
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+       
+            <input type="file" name="file" id="file" class="btn-default btn-lg btn-block"  />
+            <br>
+            <input type="submit" name="submit" value="Upload" class="btn-success btn-lg btn-block" style="width:100%"/>
+
+        
+    }
+
+</div>

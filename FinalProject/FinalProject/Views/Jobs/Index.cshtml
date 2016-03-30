@@ -20,13 +20,13 @@ else if (UserRole == 2) {
 </p>*@
 <table class="table table-hover" >
     <tr>
-        <th>
+        <th style="background-color:#2B3E50">
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
+        <th style="background-color:#2B3E50">
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
+        <th style="background-color:#2B3E50">
             @Html.DisplayNameFor(model => model.Company)
         </th>
         @*<th>
@@ -38,7 +38,7 @@ else if (UserRole == 2) {
         <th>
             @Html.DisplayNameFor(model => model.TestCScore)
         </th>*@
-        <th></th>
+        <th style="background-color:#2B3E50"></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -63,7 +63,7 @@ else if (UserRole == 2) {
         </td>*@
         @if (UserRole == 1)
         {
-            <td>
+            <td style="background-color:#2B3E50">
               
           
                 @Html.ActionLink("Job Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" })                       @*APPLY*@ 

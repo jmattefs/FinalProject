@@ -12,7 +12,7 @@
 <h2>@Html.DisplayFor(model => model.Name)'s Profile</h2>
 @if (UserRole == 1)
 {
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-default" })  @*only for this person*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-danger"})  @*only for this person*@
 }
 
 <div>
@@ -70,11 +70,11 @@
             Resume
         </dt>
         <dd>
-            @Html.ActionLink("View Resume", "GetResume", new { id = Model.ResumeID })
+            @Html.ActionLink("View Resume", "GetResume", new { id = Model.ResumeID }, new { @class = "btn btn-default btn-sm" })
         </dd>
     </dl>
 </div>
-
+<br />
 <p>
     @if (UserRole == 1)
     {

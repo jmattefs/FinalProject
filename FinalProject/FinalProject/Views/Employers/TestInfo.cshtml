@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "TestInfo";
+}
+
+<h2>Test Information</h2>
+<br />
+<table>
+    <tr>
+        <th style="font-size: 20px">
+            Aptitude Test  &nbsp @Html.ActionLink("Click to view", "TestView", "Aptitudes", "", new { @class = "btn btn-default btn-xs" })
+        </th>
+
+    </tr>
+    <tr>
+        <td style="font-size: 18px; width: 1000px">
+            Our aptitude test is comprised of a series of five questions to measure a job-candidate's aptitude.  It assesses a person's thinking ability by asking questions related to things such as linguistics, deductive reasoning and numerical operations.
+        </td>
+    </tr>
+
+</table>
+<br />
+<table>
+
+    <tr>
+        <th style="font-size: 20px">
+            Personality Test  &nbsp @Html.ActionLink("Click to view", "TestView", "Personalities", "", new { @class = "btn btn-default btn-xs" })
+        </th>
+    </tr>
+    <tr>
+        <td style="font-size: 18px">Our personality test sorts job-candidates into one of the Big Five personality traits. These five personality-types are: </td>
+    </tr>
+</table>
+
+<table style="margin-top:15px">
+    <tr>
+        <td style="font-size:16px; width: 205px; text-indent:20px">Openness to Experience:</td><td style="font-size:16px; text-indent: 10px">  This person is curious, original, creative, and open to new ideas.</td>
+   </tr>
+    <tr>
+        <td style="font-size:16px; width: 205px; text-indent:20px">
+            Conscientiousness:
+        </td>
+        <td style="font-size:16px; text-indent: 10px">
+            This person is organized, punctual, goal-oriented, and dependable.
+        </td>
+
+    </tr>
+    <tr>
+        <td style="font-size:16px; width: 205px; text-indent:20px">
+            Extraversion:
+        </td>
+        <td style="font-size:16px; text-indent: 10px">
+            This person is outgoing and sociable. They prefer being in social situations.
+        </td>
+
+    </tr>
+    <tr>
+        <td style="font-size:16px; width: 205px; text-indent:20px">
+            Agreeableness:
+        </td>
+        <td style="font-size:16px; text-indent: 10px">
+            This person is tolerant, trusting, and kind.
+        </td>
+
+    </tr>
+    <tr>
+        <td style="font-size:16px; width: 205px; text-indent:20px">
+
+            Neuroticism:
+        </td>
+        <td style="font-size:16px; text-indent: 10px">
+            This person is anxious, temperamental, and moody.
+        </td>
+
+    </tr>
+</table>
+<br />
+<table>
+    <tr>
+        <th style="font-size: 20px">
+            Emotional Intelligence Test  &nbsp @Html.ActionLink("Click to view", "TestView", "EIs", "", new { @class = "btn btn-default btn-xs" })
+        </th>
+    </tr>
+    <tr>
+        <td style="font-size: 18px">Our emotional intelligence test measures an individuals capacity to recognize their own, and other people's emotions. </td>
+
+    </tr>
+</table>
